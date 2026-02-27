@@ -147,7 +147,7 @@ def largestTriangleArea( points: List[List[int]]) -> float:
 
 
     def commonChars(words: List[str]) -> List[str]:
-        mpp:Dict[str][int]={}
+        mpp:Dict[str,int]={}
         for ch in words[0]:
             mpp[ch]=mpp.get(ch,0)+1
         for i in range(1,len(words)):
