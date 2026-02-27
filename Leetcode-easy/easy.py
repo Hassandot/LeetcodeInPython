@@ -426,6 +426,17 @@ def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
         else:
             list3.append(num)
     return list1+list2+list3
+def findThePrefixCommonArray( A: List[int], B: List[int]) -> List[int]:
+    result:List[int]=[]
+    for i in range(len(A)):
+        count:int=0
+        temp:List[int]=B[:i+1]
+        for j in range(i+1):
+            count+=1 if A[j] in temp else 0
+        result.append(count)
+    return result
+
+
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
