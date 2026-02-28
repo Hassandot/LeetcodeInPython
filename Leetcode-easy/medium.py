@@ -26,4 +26,15 @@ def findThePrefixCommonArray( A: List[int], B: List[int]) -> List[int]:
             count+=1 if A[j] in temp else 0
         result.append(count)
     return result
-
+def countMaxOrSubsets(self, nums: List[int]) -> int:
+        noc=1<<len(nums)
+        maxXOR:int=0
+        xors:List[int]=[]
+        for i in range(1,noc):
+            xor:int=0
+            for j in range(len(nums)):
+                if i & 1<<j :
+                    xor|=nums[j]
+            maxXOR=max(maxXOR,xor)
+            xors.append(xor)
+        return xors.count(maxXOR)
