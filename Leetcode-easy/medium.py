@@ -87,3 +87,14 @@ class SubrectangleQueries:
 def sortTheStudents(score: List[List[int]], k: int) -> List[List[int]]:
     return sorted(score,reverse=True,key=lambda x:x[k])
 
+def minOperations( nums: List[int], k: int) -> int:
+    xors=0
+    for num in nums:
+        xors^=num
+    xor:str=format(xors,'032b')
+    kbits:str=format(k,'032b')
+    count:int=0
+    for i in range(32):
+        if xor[i]!=kbits[i]:
+            count+=1
+    return count
