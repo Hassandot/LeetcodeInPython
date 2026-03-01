@@ -64,3 +64,23 @@ def findMatrix(nums: List[int]) -> List[List[int]]:
                 res[i].append(key)
                 mpp[key]-=1
     return res
+
+
+class SubrectangleQueries:
+
+    def __init__(self, rectangle: List[List[int]]):
+        self.rec:List[List[int]]=[]
+        col:int=len(rectangle[0])
+        for i in range(len(rectangle)):
+            row:List[int]=[]
+            for j in range(col):
+                row.append(rectangle[i][j])
+            self.rec.append(row)
+
+    def updateSubrectangle(self, row1: int, col1: int, row2: int, col2: int, newValue: int) -> None:
+        for i in range(row1,row2+1):
+            for j in range(col1,col2+1):
+                self.rec[i][j]=newValue
+
+    def getValue(self, row: int, col: int) -> int:
+        return self.rec[row][col]
