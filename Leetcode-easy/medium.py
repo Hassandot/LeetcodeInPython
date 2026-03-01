@@ -84,3 +84,6 @@ class SubrectangleQueries:
 
     def getValue(self, row: int, col: int) -> int:
         return self.rec[row][col]
+def sortTheStudents(score: List[List[int]], k: int) -> List[List[int]]:
+    return sorted(score,reverse=True,key=lambda x:x[k])
+
