@@ -51,3 +51,16 @@ def countPoints(points: List[List[int]], queries: List[List[int]]) -> List[int]:
                 count+=1
         result.append(count)
     return result
+def findMatrix(nums: List[int]) -> List[List[int]]:
+    mpp:Dict[int,int]={}
+    size:int=0
+    for num in nums:
+        mpp[num]=mpp.get(num,0)+1
+        size=max(size,mpp.get(num))
+    res:List[List[int]]=[[] for i in range(size)]
+    for i in range(size):
+        for key,value in mpp.items():
+            if value!=0:
+                res[i].append(key)
+                mpp[key]-=1
+    return res
