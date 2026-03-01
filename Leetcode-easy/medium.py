@@ -64,8 +64,6 @@ def findMatrix(nums: List[int]) -> List[List[int]]:
                 res[i].append(key)
                 mpp[key]-=1
     return res
-
-
 class SubrectangleQueries:
 
     def __init__(self, rectangle: List[List[int]]):
@@ -86,8 +84,8 @@ class SubrectangleQueries:
         return self.rec[row][col]
 def sortTheStudents(score: List[List[int]], k: int) -> List[List[int]]:
     return sorted(score,reverse=True,key=lambda x:x[k])
-
 def minOperations( nums: List[int], k: int) -> int:
+
     xors=0
     for num in nums:
         xors^=num
@@ -98,3 +96,14 @@ def minOperations( nums: List[int], k: int) -> int:
         if xor[i]!=kbits[i]:
             count+=1
     return count
+
+
+def processQueries(q: List[int], m: int) -> List[int]:
+    p:List[int]=[i for i in range(1,m+1)]
+    res:List[int]=[]
+    for i in range(len(q)):
+        ind:int=p.index(q[i])
+        res.append(ind)
+        temp:int=p.pop(ind)
+        p.insert(0,temp)
+    return res
