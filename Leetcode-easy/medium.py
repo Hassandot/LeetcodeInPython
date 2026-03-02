@@ -143,3 +143,17 @@ def rearrangeArray(self, nums: List[int]) -> List[int]:
             res.append(list1[i])
             res.append(list2[i])
         return res
+def onesMinusZeros(grid: List[List[int]]) -> List[List[int]]:
+        row:int=len(grid)
+        col:int=len(grid[0])
+        mat:List[List[int]]=[[0]*col for i in range(row)]
+        colsOnesAndZero:List[Tuple[int,int]]=[]
+        for j in range(col):
+            column:List[int]=[grid[k][j] for k in range(row)]
+            colsOnesAndZero.append((column.count(1),column.count(0)))
+        for i in range(row):
+            oneRow=grid[i].count(1)
+            zeroRow=grid[i].count(0)
+            for j in range(col):                
+                mat[i][j]=oneRow+colsOnesAndZero[j][0]-zeroRow-colsOnesAndZero[j][1]
+        return mat
