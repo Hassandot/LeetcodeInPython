@@ -157,3 +157,25 @@ def onesMinusZeros(grid: List[List[int]]) -> List[List[int]]:
             for j in range(col):                
                 mat[i][j]=oneRow+colsOnesAndZero[j][0]-zeroRow-colsOnesAndZero[j][1]
         return mat
+def diagonalSort(grid: List[List[int]]) -> List[List[int]]:
+    m=len(grid)
+    n=len(grid[0])
+    def sortDiagonal(row:int,col:int):
+        dg:List[int]=[]
+        i,j=row,col
+        while i<m and j<n:
+            dg.append(grid[i][j])
+            i+=1
+            j+=1
+        dg.sort(reverse=False)
+        idx:int=0
+        while i<m and j<n:
+            grid[i][j]=dg[idx]
+            i+=1
+            j+=1
+            idx+=1
+    for i in range(n):
+        sortDiagonal(0,i)
+    for i in range(1,m):
+        sortDiagonal(i,0)
+    return grid
