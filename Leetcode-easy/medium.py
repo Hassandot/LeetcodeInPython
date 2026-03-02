@@ -109,3 +109,29 @@ def processQueries(q: List[int], m: int) -> List[int]:
 def maxCoins(self, piles: List[int]) -> int:
         piles.sort()
         return sum([piles[i] for i in range(len(piles)//3,len(piles),2)])
+def sortMatrix( grid: List[List[int]]) -> List[List[int]]:
+    n=len(grid)
+    mat:List[List[int]]=[[0]*n for i in range(n)]
+    for i in range(n):
+        dg:List[int]=[]
+        row:int=i
+        for j in range(n-i):
+            dg.append(grid[row][j])
+            row+=1
+        dg.sort(reverse=True)
+        sorRow:int=i
+        for k in range(len(dg)):
+            mat[sorRow][k]=dg[k]
+            sorRow+=1
+    for i in range(1,n):
+        row:List[int]=[]
+        col:int=i
+        for j in range(n-i):
+            row.append(grid[j][col])
+            col+=1
+        row.sort()
+        sorCol:int=i
+        for j in range(len(row)):
+            mat[j][sorCol]=row[j]
+            sorCol+=1
+    return mat
