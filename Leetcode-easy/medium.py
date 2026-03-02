@@ -135,3 +135,11 @@ def sortMatrix( grid: List[List[int]]) -> List[List[int]]:
             mat[j][sorCol]=row[j]
             sorCol+=1
     return mat
+def rearrangeArray(self, nums: List[int]) -> List[int]:
+        list1:List[int]=[num for num in nums if num>0]
+        list2:List[int]=[num for num in nums if num<0]
+        res:List[int]=[]
+        for i in range(len(nums)//2):
+            res.append(list1[i])
+            res.append(list2[i])
+        return res
