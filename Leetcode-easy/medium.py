@@ -85,7 +85,6 @@ class SubrectangleQueries:
 def sortTheStudents(score: List[List[int]], k: int) -> List[List[int]]:
     return sorted(score,reverse=True,key=lambda x:x[k])
 def minOperations( nums: List[int], k: int) -> int:
-
     xors=0
     for num in nums:
         xors^=num
@@ -97,7 +96,6 @@ def minOperations( nums: List[int], k: int) -> int:
             count+=1
     return count
 
-
 def processQueries(q: List[int], m: int) -> List[int]:
     p:List[int]=[i for i in range(1,m+1)]
     res:List[int]=[]
@@ -107,3 +105,7 @@ def processQueries(q: List[int], m: int) -> List[int]:
         temp:int=p.pop(ind)
         p.insert(0,temp)
     return res
+
+def maxCoins(self, piles: List[int]) -> int:
+        piles.sort()
+        return sum([piles[i] for i in range(len(piles)//3,len(piles),2)])
