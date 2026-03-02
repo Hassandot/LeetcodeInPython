@@ -177,3 +177,16 @@ def diagonalSort(grid: List[List[int]]) -> List[List[int]]:
     for i in range(1,m):
         sortDiagonal(i,0)
     return grid
+def checkArithmeticSubarrays( nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+    res:List[bool]=[]
+    for i in range(len(l)):
+        newArray:List[int]=nums[l[i]:r[i]+1]
+        newArray.sort(reverse=False)
+        diff:int=newArray[1]-newArray[0]
+        flag:bool=True
+        for j in range(2,len(newArray)):
+            if newArray[j]-newArray[j-1]!=diff:
+                flag=False
+                break
+        res.append(flag)
+    return res
