@@ -199,3 +199,9 @@ def toggleLightBulbs(self, bulbs: list[int]) -> list[int]:
             if j:
                 Onbulbs.append(i)
         return sorted(Onbulbs)    
+
+def buyChoco(self, prices: List[int], money: int) -> int:
+        prices.sort()
+        if (prices[0]+prices[1])<=money:
+            return money-(prices[0]+prices[1])
+        return money
