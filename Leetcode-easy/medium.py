@@ -199,9 +199,20 @@ def toggleLightBulbs(self, bulbs: list[int]) -> list[int]:
             if j:
                 Onbulbs.append(i)
         return sorted(Onbulbs)    
-
 def buyChoco(self, prices: List[int], money: int) -> int:
         prices.sort()
         if (prices[0]+prices[1])<=money:
             return money-(prices[0]+prices[1])
         return money
+
+def minimumDifference(nums: List[int], k: int) -> int:
+        n=len(nums)
+        if n==1:
+            return 0
+        nums.sort()
+        minDiff:int=float('inf')
+        for i in range(n-k+1):
+            tempArray:List[int]=nums[i:i+k]
+            tempMin:int=max(tempArray)-min(tempArray)
+            minDiff=min(minDiff,tempMin)
+        return minDiff
