@@ -190,3 +190,12 @@ def checkArithmeticSubarrays( nums: List[int], l: List[int], r: List[int]) -> Li
                 break
         res.append(flag)
     return res
+def toggleLightBulbs(self, bulbs: list[int]) -> list[int]:
+        res:List[bool]=[False for _ in range(101)]
+        for i in range(len(bulbs)):
+            res[bulbs[i]]=not res[bulbs[i]]
+        Onbulbs:List[int]=[]
+        for i,j in enumerate(res):
+            if j:
+                Onbulbs.append(i)
+        return sorted(Onbulbs)    
