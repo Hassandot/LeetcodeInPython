@@ -533,6 +533,13 @@ def minimumFlips(self, n: int) -> int:
             if binary[i]!=revBinary[i]:
                 count+=1
         return count
+def largestEven(self, s: str) -> str:
+        if '2' not in s:
+            return ""
+        for i in range(len(s)-1,-1,-1):
+            if s[i]=='2':
+                return s[:(i+1)]
+        return ""
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
