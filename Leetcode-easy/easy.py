@@ -588,7 +588,10 @@ def convertTime( current: str, correct: str) -> int:
         else:
             i+=1
     return count
-
+def furthestDistanceFromOrigin(self, moves: str) -> int:
+        countOfL:int=moves.count('L')
+        countOfR:int=moves.count('R')
+        return max(countOfL,countOfR)+(len(moves)-(countOfL+countOfR))-min(countOfL,countOfR)
 #def countBinarySubstrings(s: str) -> int:
     
 
