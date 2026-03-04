@@ -486,6 +486,13 @@ def minimumDifference(nums: List[int], k: int) -> int:
             tempMin:int=max(tempArray)-min(tempArray)
             minDiff=min(minDiff,tempMin)
         return minDiff
+
+def reversePrefix(self, s: str, k: int) -> str:
+        temp:List[str]=list(s)
+        reversedArray:List[str]=list(reversed(temp[0:k]))
+        for i in range(k,len(temp)):
+            reversedArray.append(temp[i])
+        return ''.join(reversedArray)
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
