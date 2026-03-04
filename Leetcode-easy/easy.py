@@ -525,7 +525,14 @@ def reverseByType(self, s: str) -> str:
                 res+=revS[j]
                 j+=1
         return res
-
+def minimumFlips(self, n: int) -> int:
+        binary:List[str]=list(bin(n)[2:])
+        revBinary:List[str]=list(reversed(binary))
+        count:int=0
+        for i in range(len(binary)):
+            if binary[i]!=revBinary[i]:
+                count+=1
+        return count
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
