@@ -436,7 +436,56 @@ def findThePrefixCommonArray( A: List[int], B: List[int]) -> List[int]:
         result.append(count)
     return result
 
+def largestInteger( num: int) -> int:
+    numbers:List[int]=list(map(int,str(num)))
+    even:List[int]=[]
+    odd:List[int]=[]
+    for n in numbers:
+        if n&1:
+            odd.append(n)
+        else:
+            even.append(n)
+    even.sort(reverse=True)
+    odd.sort(reverse=True)
+    oddIndexes:List[int]=[i for i in range(len(numbers)) if numbers[i]&1]
+    evenIndexes:List[int]=[i  for i in range(len(numbers)) if not(numbers[i]&1)]
+    res:List[int]=[0]*len(numbers)
+    
+    for i,o in enumerate(odd):
+        res[oddIndexes[i]]=o
+    for i,e in enumerate(even):
+        res[evenIndexes[i]]=e
 
+    originalNumber:str=''
+    for n in res:
+        originalNumber+=str(n)
+    return int(originalNumber)
+def toggleLightBulbs(self, bulbs: list[int]) -> list[int]:
+        res:List[bool]=[False for _ in range(101)]
+        for i in range(len(bulbs)):
+            res[bulbs[i]]=not res[bulbs[i]]
+        Onbulbs:List[int]=[]
+        for i,j in enumerate(res):
+            if j:
+                Onbulbs.append(i)
+        return sorted(Onbulbs)    
+def buyChoco(self, prices: List[int], money: int) -> int:
+        prices.sort()
+        if (prices[0]+prices[1])<=money:
+            return money-(prices[0]+prices[1])
+        return money
+
+def minimumDifference(nums: List[int], k: int) -> int:
+        n=len(nums)
+        if n==1:
+            return 0
+        nums.sort()
+        minDiff:int=float('inf')
+        for i in range(n-k+1):
+            tempArray:List[int]=nums[i:i+k]
+            tempMin:int=max(tempArray)-min(tempArray)
+            minDiff=min(minDiff,tempMin)
+        return minDiff
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     

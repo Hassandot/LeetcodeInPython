@@ -190,29 +190,4 @@ def checkArithmeticSubarrays( nums: List[int], l: List[int], r: List[int]) -> Li
                 break
         res.append(flag)
     return res
-def toggleLightBulbs(self, bulbs: list[int]) -> list[int]:
-        res:List[bool]=[False for _ in range(101)]
-        for i in range(len(bulbs)):
-            res[bulbs[i]]=not res[bulbs[i]]
-        Onbulbs:List[int]=[]
-        for i,j in enumerate(res):
-            if j:
-                Onbulbs.append(i)
-        return sorted(Onbulbs)    
-def buyChoco(self, prices: List[int], money: int) -> int:
-        prices.sort()
-        if (prices[0]+prices[1])<=money:
-            return money-(prices[0]+prices[1])
-        return money
 
-def minimumDifference(nums: List[int], k: int) -> int:
-        n=len(nums)
-        if n==1:
-            return 0
-        nums.sort()
-        minDiff:int=float('inf')
-        for i in range(n-k+1):
-            tempArray:List[int]=nums[i:i+k]
-            tempMin:int=max(tempArray)-min(tempArray)
-            minDiff=min(minDiff,tempMin)
-        return minDiff
