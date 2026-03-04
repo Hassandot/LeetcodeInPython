@@ -557,6 +557,15 @@ def capitalizeTitle(self, title: str) -> str:
                 
         return res[:len(res)-1]
 #00001111
+
+def digitSum(s: str, k: int) -> str:
+    res:str=s
+    while len(res)>k:
+        temp:str=''
+        for i in range(0,len(res),k):
+            temp+=str(sum(list(map(int,res[i:i+k]))))
+        res=temp
+    return res
 #def countBinarySubstrings(s: str) -> int:
     
 
