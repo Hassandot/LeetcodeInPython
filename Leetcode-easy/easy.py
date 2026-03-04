@@ -566,6 +566,29 @@ def digitSum(s: str, k: int) -> str:
             temp+=str(sum(list(map(int,res[i:i+k]))))
         res=temp
     return res
+
+def convertTime( current: str, correct: str) -> int:
+    curr:List[int]=[]
+    corr:List[int]=[]
+    curr.append(int(current[0:2]))
+    curr.append(int(current[3:]))
+    corr.append(int(correct[0:2]))
+    corr.append(int(correct[3:]))
+    minutes:List[int]=[60,15,5,1]
+    i=0
+    count=0
+    while curr[0]!=corr[0] or curr[1]!=corr[1]:
+        h,m=curr[0],curr[1]
+        m+=minutes[i]
+        h+=m//60
+        m=m%60
+        if h*60+m <= corr[0]*60+corr[1] :
+            curr[0],curr[1]=h,m
+            count+=1
+        else:
+            i+=1
+    return count
+
 #def countBinarySubstrings(s: str) -> int:
     
 
