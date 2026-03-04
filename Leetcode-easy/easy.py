@@ -505,6 +505,27 @@ def mapWordWeights(self, words: List[str], weights: List[int]) -> str:
                 total+=weights[ord(ch)-97]
             res+=mpp[total%26]
         return res
+def reverseByType(self, s: str) -> str:
+        specials:List[str]=[]
+        letters:List[str]=[]
+        for ch in s:
+            if ch.isalpha():
+                letters.append(ch)
+            else:
+                specials.append(ch)
+        revA:List[str]=list(reversed(letters))
+        revS:List[str]=list(reversed(specials))
+        res:str=''
+        i,j=0,0
+        for k in range(len(s)):
+            if s[k].isalpha():
+                res+=revA[i]
+                i+=1
+            else:
+                res+=revS[j]
+                j+=1
+        return res
+
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
