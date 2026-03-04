@@ -540,6 +540,22 @@ def largestEven(self, s: str) -> str:
             if s[i]=='2':
                 return s[:(i+1)]
         return ""
+
+def capitalizeTitle(self, title: str) -> str:
+        title+=' '
+        res:str=''
+        word:str=''
+        for ch in title:
+            if ch.isalpha():
+                word+=ch
+            else:
+                if len(word)>=3:
+                    res+=word.capitalize()+' '
+                else:
+                    res+=''.join([c.lower() for c in word])+' '
+                word=''
+                
+        return res[:len(res)-1]
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
