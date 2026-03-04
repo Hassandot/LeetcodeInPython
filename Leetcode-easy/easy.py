@@ -493,6 +493,18 @@ def reversePrefix(self, s: str, k: int) -> str:
         for i in range(k,len(temp)):
             reversedArray.append(temp[i])
         return ''.join(reversedArray)
+def mapWordWeights(self, words: List[str], weights: List[int]) -> str:
+        alphabets:str=list('abcdefghijklmnopqrstuvwxyz')
+        digits:List[int]=[i for i in range(0,26)]
+        reversedAlphas:List[str]=list(reversed(alphabets))     
+        mpp:Dict[int,str]=dict(zip(digits,reversedAlphas))
+        res:str=''
+        for word in words:
+            total:int=0
+            for ch in word:
+                total+=weights[ord(ch)-97]
+            res+=mpp[total%26]
+        return res
 #00001111
 #def countBinarySubstrings(s: str) -> int:
     
