@@ -633,6 +633,21 @@ class MyHashMap:
             del self.keys[index]
             del self.values[index]
 
+def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
+        mpp1:Dict[str,int]={}
+        mpp2:Dict[str,int]={}
+        for w in word1:
+            mpp1[w]=mpp1.get(w,0)+1
+        for w in word2:
+            mpp2[w]=mpp2.get(w,0)+1
+        for (key,value) in mpp1.items():
+            if mpp1[key]-mpp2.get(key,0)>3:
+                return False
+        
+        for (key,value) in mpp2.items():
+            if mpp2[key]-mpp1.get(key,0)>3:
+                return False
+        return True
 
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
