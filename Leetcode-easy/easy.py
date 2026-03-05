@@ -593,7 +593,26 @@ def furthestDistanceFromOrigin(self, moves: str) -> int:
         countOfR:int=moves.count('R')
         return max(countOfL,countOfR)+(len(moves)-(countOfL+countOfR))-min(countOfL,countOfR)
 #def countBinarySubstrings(s: str) -> int:
-    
+class MyHashSet:
+
+    def __init__(self):
+        self.sss:Set[int]=set()
+
+    def add(self, key: int) -> None:
+        self.sss.add(key)
+
+    def remove(self, key: int) -> None:
+        if key in self.sss:
+            self.sss.remove(key)
+
+    def contains(self, key: int) -> bool:
+        return key in self.sss
+
+# Your MyHashSet object will be instantiated and called as such:
+# obj = MyHashSet()
+# obj.add(key)
+# obj.remove(key)
+# param_3 = obj.contains(key)
 
 #print(countBinarySubstrings("00001111"))
 #print(countBinarySubstrings(""))
