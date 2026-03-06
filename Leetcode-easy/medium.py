@@ -193,3 +193,35 @@ def checkArithmeticSubarrays( nums: List[int], l: List[int], r: List[int]) -> Li
 
 def maxDistinct(self, s: str) -> int:
         return len(set(s))
+
+class Codec:
+    def __init__(self):
+        self._encryptTable:Dict[str,str]={}
+        self._decryptTable:Dict[str,str]={}
+        self.initializeTable()
+    def initializeTable(self):
+        key = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+        self._encryptTable=dict(zip(alphabet,key))
+        self._decryptTable=dict(zip(key,alphabet))
+    def encode(self, longUrl: str) -> str:
+        """Encodes a URL to a shortened URL.
+        """
+        cipher:str=''
+        for character in longUrl:
+            if character.isalpha():
+                cipher+=self._encryptTable[character]
+            else:
+                cipher+=character
+        return cipher
+
+    def decode(self, shortUrl: str) -> str:
+        """Decodes a shortened URL to its original URL.
+        """
+        plaintext:str=''
+        for character in shortUrl:
+            if character.isalpha():
+                plaintext+=self._decryptTable[character]
+            else:
+                plaintext+=character
+        return plaintext
