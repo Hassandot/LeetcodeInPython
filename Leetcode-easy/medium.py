@@ -191,3 +191,5 @@ def checkArithmeticSubarrays( nums: List[int], l: List[int], r: List[int]) -> Li
         res.append(flag)
     return res
 
+def maxDistinct(self, s: str) -> int:
+        return len(set(s))
