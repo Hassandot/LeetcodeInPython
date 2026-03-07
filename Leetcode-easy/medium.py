@@ -265,3 +265,13 @@ def maxDepth(self, root: Optional[TreeNode]) -> int:
     l=self.maxDepth(root.left)
     r=self.maxDepth(root.right)
     return 1+max(l,r)
+def minDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        l=self.minDepth(root.left)
+        r=self.minDepth(root.right)
+        if root.left is None:
+            return 1+r
+        elif root.right is None:
+            return 1+l
+        return 1+min(l,r)
