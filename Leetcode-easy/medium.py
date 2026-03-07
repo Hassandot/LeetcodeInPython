@@ -265,6 +265,7 @@ def maxDepth(self, root: Optional[TreeNode]) -> int:
     l=self.maxDepth(root.left)
     r=self.maxDepth(root.right)
     return 1+max(l,r)
+
 def minDepth(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
@@ -275,3 +276,17 @@ def minDepth(self, root: Optional[TreeNode]) -> int:
         elif root.right is None:
             return 1+l
         return 1+min(l,r)
+
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        ans:List[int]=[0]
+        def dfs(node:TreeNode)->int:
+            if node is None:
+                return -1
+            l=dfs(node.left)
+            r=dfs(node.right)
+
+            ans[0]=max(ans[0],l+r+2)
+            return 1+max(l,r)
+        dfs(root)
+        return ans[0]
