@@ -300,3 +300,13 @@ class Solution:
         l=self.hasPathSum(root.left,targetSum-root.val)
         r=self.hasPathSum(root.right,targetSum-root.val)
         return l or r
+
+class Solution:
+    def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        if root.val==val:
+            return root
+        elif val<root.val:
+            return self.searchBST(root.left,val)
+        return self.searchBST(root.right,val)
