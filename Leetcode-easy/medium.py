@@ -323,3 +323,15 @@ class Solution:
                 return False
             return l and r
         return dfs(root,float('-inf'),float('inf'))
+    
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if p is None and q is None:
+            return True
+        elif p is None or q is None:
+            return False
+        elif p.val!=q.val:
+            return False
+        l=self.isSameTree(p.left,q.left)
+        r=self.isSameTree(p.right,q.right)
+        return l and r
