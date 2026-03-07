@@ -310,3 +310,16 @@ class Solution:
         elif val<root.val:
             return self.searchBST(root.left,val)
         return self.searchBST(root.right,val)
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        def dfs(node:TreeNode,low:int,high:int)->bool:
+            if node is None:
+                return True
+
+            if low<node.val<high:
+                l=dfs(node.left,low,node.val)
+                r=dfs(node.right,node.val,high)
+            else:
+                return False
+            return l and r
+        return dfs(root,float('-inf'),float('inf'))
