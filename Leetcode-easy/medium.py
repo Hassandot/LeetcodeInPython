@@ -9,7 +9,7 @@ from tkinter import CURRENT, FIRST
 from token import LESS
 from tokenize import Double
 from turtle import Turtle
-from typing import List,Dict, Reversible,Tuple,Set
+from typing import List,Dict, Optional, Reversible,Tuple,Set
 from unicodedata import digit
 from xml.dom import minicompat
 from xmlrpc.client import MININT
@@ -226,11 +226,11 @@ class Codec:
                 plaintext+=character
         return plaintext
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         ans:List[int]=[0]
@@ -290,3 +290,13 @@ class Solution:
             return 1+max(l,r)
         dfs(root)
         return ans[0]
+    
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        if root is None:
+            return False
+        if root.left is None and root.right is None:
+            return targetSum-root.val == 0
+        l=self.hasPathSum(root.left,targetSum-root.val)
+        r=self.hasPathSum(root.right,targetSum-root.val)
+        return l or r
