@@ -225,3 +225,22 @@ class Codec:
             else:
                 plaintext+=character
         return plaintext
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        ans:List[int]=[0]
+        def dfs(node:TreeNode,maximum:int):
+            if node is None:
+                return 
+            if node.val>=maximum:
+                ans[0]+=1
+            dfs(node.left,max(maximum,node.val))
+            dfs(node.right,max(maximum,node.val))
+
+        dfs(root,float('-inf'))
+        return ans[0]
