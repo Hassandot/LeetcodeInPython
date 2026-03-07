@@ -244,3 +244,17 @@ class Solution:
 
         dfs(root,float('-inf'))
         return ans[0]
+    
+
+def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        ans:List[int]=[0]
+        def dfs(node:TreeNode,low:int,high:int)->int:
+            if node is None:
+                return 0
+            if low<=node.val<=high:
+                ans[0]+=node.val
+            l=dfs(node.left,low,high)
+            r=dfs(node.right,low,high)
+            
+        dfs(root,low,high)
+        return ans[0]
