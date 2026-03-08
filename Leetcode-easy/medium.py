@@ -407,3 +407,15 @@ class Solution:
             dfs(node.right)
         dfs(root)
         return ans
+    
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans:List[int]=[]
+        def dfs(node):
+            if node is None:
+                return
+            dfs(node.left)
+            dfs(node.right)
+            ans.append(node.val)
+        dfs(root)
+        return ans    
