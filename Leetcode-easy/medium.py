@@ -380,3 +380,19 @@ def isSymmetric(self, root: Optional[TreeNode]) -> bool:
             r=isSameTree(p.right,q.left)
             return l and r
         return isSameTree(root.left,root.right)
+
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        ans=[0]
+        def helper(node):
+            if node is None:
+                return 0
+            lh=helper(node.left)
+            rh=helper(node.right)
+
+            ans[0]=max(ans[0],abs(lh-rh))
+            return 1+max(lh,rh)
+        helper(root)
+        if ans[0]>1:
+            return False
+        return True
