@@ -419,3 +419,11 @@ class Solution:
             ans.append(node.val)
         dfs(root)
         return ans    
+    
+class Solution:
+    def checkTree(self, root: Optional[TreeNode]) -> bool:
+        if root.left is None and root.right is None:
+            return root.val
+        l=self.checkTree(root.left)
+        r=self.checkTree(root.right)
+        return root.val==l+r
