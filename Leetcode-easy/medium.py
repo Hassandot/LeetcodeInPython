@@ -367,3 +367,16 @@ class Solution:
             helper(node.right)
         helper(root)
         return ans
+    
+def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        def isSameTree( p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+            if p is None and q is None:
+                return True
+            elif p is None or q is None:
+                return False
+            elif p.val!=q.val:
+                return False
+            l=isSameTree(p.left,q.right)
+            r=isSameTree(p.right,q.left)
+            return l and r
+        return isSameTree(root.left,root.right)
