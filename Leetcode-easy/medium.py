@@ -396,3 +396,14 @@ class Solution:
         if ans[0]>1:
             return False
         return True
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans:List[int]=[]
+        def dfs(node):
+            if node is None:
+                return
+            ans.append(node.val)
+            dfs(node.left)
+            dfs(node.right)
+        dfs(root)
+        return ans
