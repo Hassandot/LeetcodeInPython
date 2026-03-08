@@ -335,3 +335,24 @@ class Solution:
         l=self.isSameTree(p.left,q.left)
         r=self.isSameTree(p.right,q.right)
         return l and r
+    
+class Solution:
+        
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        def isSameTree(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+            if p is None and q is None:
+                return True
+            elif p is None or q is None:
+                return False
+            elif p.val!=q.val:
+                return False
+            l=isSameTree(p.left,q.left)
+            r=isSameTree(p.right,q.right)
+            return l and r
+        if root is None:
+            return False
+        if isSameTree(root,subRoot):
+            return True
+        l=self.isSubtree(root.left,subRoot)
+        r=self.isSubtree(root.right,subRoot)
+        return l or r
