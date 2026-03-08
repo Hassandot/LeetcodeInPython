@@ -427,3 +427,22 @@ class Solution:
         l=self.checkTree(root.left)
         r=self.checkTree(root.right)
         return root.val==l+r
+
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        ans:List[str]=[]
+        def dfs(root:TreeNode,path:str):
+            if root is None:
+                return 
+            if path:
+                path=path+'->'+str(root.val)
+            else:
+                path=str(root.val)
+
+            if root.left is None and root.right is None:
+                ans.append(path)
+                return 
+            dfs(root.left,path)
+            dfs(root.right,path)
+        dfs(root,'')
+        return ans
