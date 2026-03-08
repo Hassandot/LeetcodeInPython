@@ -356,3 +356,14 @@ class Solution:
         l=self.isSubtree(root.left,subRoot)
         r=self.isSubtree(root.right,subRoot)
         return l or r
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans:List[int]=[]
+        def helper(node):
+            if node is None:
+                return 
+            helper(node.left)
+            ans.append(node.val)
+            helper(node.right)
+        helper(root)
+        return ans
