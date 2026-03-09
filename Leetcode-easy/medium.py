@@ -446,3 +446,19 @@ class Solution:
             dfs(root.right,path)
         dfs(root,'')
         return ans
+
+
+def minimumOperations(grid: List[List[int]]) -> int:
+    total:int=0
+    col:int=len(grid[0])
+    rows:int=len(grid)
+    for i in range(col):
+        currentSum:int=0
+        actualSum:int=0
+        starter:int=grid[0][i]
+        for j in range(rows):
+            currentSum+=grid[j][i]
+            actualSum+=starter
+            starter+=1
+        total+=actualSum-currentSum
+    return total
