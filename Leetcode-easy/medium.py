@@ -519,3 +519,13 @@ def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
     for i in range(len(arr)-1):
         md=min(md,abs(arr[i+1]-arr[i]))
     return md
+
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        if len(nums)==0:
+            return None
+        mid=len(nums)//2
+        node:TreeNode=TreeNode(nums[mid])    
+        node.left=self.sortedArrayToBST(nums[:mid])
+        node.right=self.sortedArrayToBST(nums[mid+1:])
+        return node    
