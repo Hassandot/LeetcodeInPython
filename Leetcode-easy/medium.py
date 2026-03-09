@@ -462,3 +462,21 @@ def minimumOperations(grid: List[List[int]]) -> int:
             starter+=1
         total+=actualSum-currentSum
     return total
+def findKOr(self, nums: List[int], k: int) -> int:
+        mpp:Dict[int,int]={}
+
+        for num in nums:
+            binary=format(int(num),'0b')
+            n=len(binary)
+            for i in range(n-1,-1,-1):
+                index=(n-1)-i
+                mpp[index]=mpp.get(index,0)+int(binary[i])
+        mat:List[List[int]]=[[key,value]  for (key,value) in mpp.items()]
+        mat.sort(reverse=True,key=lambda x : x[0])
+        number:str=''
+        for x in mat:
+            if x[1]>=k:
+                number+='1'
+            else:
+                number+='0'
+        return int(number,2)
