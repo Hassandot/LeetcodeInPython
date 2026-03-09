@@ -491,3 +491,16 @@ def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
             dfs(node.right,False)
         dfs(root,False)
         return ans[0]
+def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        ans:List[int]=[0]
+        mpp:Dict[int,int]={}
+        def dfs(node):
+            if node is None:
+                return 
+            mpp[node.val]=mpp.get(node.val,0)+1
+            ans[0]=max(mpp.get(node.val),ans[0])
+            dfs(node.left)
+            dfs(node.right)
+        dfs(root)
+        res:List[int]=[key for (key,value) in mpp.items() if value==ans[0]]
+        return res
