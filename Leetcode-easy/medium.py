@@ -480,3 +480,14 @@ def findKOr(self, nums: List[int], k: int) -> int:
             else:
                 number+='0'
         return int(number,2)
+def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        ans=[0]
+        def dfs(node,left):
+            if node is None:
+                return 
+            if node.left is None and node.right is None and left==True:
+                ans[0]+=node.val
+            dfs(node.left,True)
+            dfs(node.right,False)
+        dfs(root,False)
+        return ans[0]
