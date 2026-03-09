@@ -504,3 +504,18 @@ def findMode(self, root: Optional[TreeNode]) -> List[int]:
         dfs(root)
         res:List[int]=[key for (key,value) in mpp.items() if value==ans[0]]
         return res
+
+def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+    ans:List[int]=[]
+    def dfs(node):
+        if node is None:
+            return 
+        ans.append(node.val)
+        dfs(node.left)
+        dfs(node.right)
+    dfs(root)
+    arr=sorted(ans,reverse=False)
+    md:int=float('inf')
+    for i in range(len(arr)-1):
+        md=min(md,abs(arr[i+1]-arr[i]))
+    return md
