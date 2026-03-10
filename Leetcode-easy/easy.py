@@ -667,6 +667,20 @@ def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
+
+def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
+       ans:List[int]=[]
+       def dfs(node):
+           if node is None:
+               return 
+           ans.append(node.val)
+           dfs(node.left)
+           dfs(node.right)
+       dfs(root)
+       uniqueSortedArray=sorted(list(set(ans)))
+       if len(uniqueSortedArray)>1:
+           return uniqueSortedArray[1]
+       return -1
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
