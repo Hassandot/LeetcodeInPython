@@ -728,3 +728,20 @@ def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
             dfs(node.right,path)
         dfs(root,'')
         return ans[0]
+def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        if root is None:
+            return []
+        queue:Deque[TreeNode]=deque([root])
+        res:List[float]=[]
+        while queue:
+            level_size:int=len(queue)
+            level:int=0
+            for i in range(level_size):
+                node:TreeNode=queue.popleft()
+                level+=node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            res.append(level/level_size)
+        return res
