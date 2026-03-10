@@ -730,6 +730,19 @@ def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
             node.right=makeTree(nums[1:])
             return node
         return makeTree(ans)
+
+def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
+        ans:List[int]=[0]
+        def dfs(node:TreeNode,path:str):
+            if node is None:
+                return 
+            path+=str(node.val)
+            if node.left is None and node.right is None:
+                ans[0]+=int(path,2)
+            dfs(node.left,path)
+            dfs(node.right,path)
+        dfs(root,'')
+        return ans[0]
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
