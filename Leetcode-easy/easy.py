@@ -689,7 +689,18 @@ def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) 
             return cloned
         l=self.getTargetCopy(original,cloned.left,target)
         r=self.getTargetCopy(original,cloned.right,target)
+
         return l or r
+
+def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root1 is None :
+            return root2
+        if root2 is None:
+            return root1
+        node:TreeNode=TreeNode(root1.val+root2.val)
+        node.left=self.mergeTrees(root1.left,root2.left)
+        node.right=self.mergeTrees(root1.right,root2.right)
+        return node
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
