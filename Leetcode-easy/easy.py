@@ -648,7 +648,17 @@ def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
             if mpp2[key]-mpp1.get(key,0)>3:
                 return False
         return True
-
+def findOcurrences(self, text: str, first: str, second: str) -> List[str]:
+        res:List[str]=[]
+        temp:List[str]=text.split(' ')
+        third=False
+        for i in range(len(temp)-1):
+            if third:
+                res.append(temp[i+1])
+                third=False
+            if temp[i]==first and temp[i+1]==second:
+                third=True
+        return res
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
