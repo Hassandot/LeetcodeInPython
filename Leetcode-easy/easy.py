@@ -659,6 +659,14 @@ def findOcurrences(self, text: str, first: str, second: str) -> List[str]:
             if temp[i]==first and temp[i+1]==second:
                 third=True
         return res
+def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None :
+            return None
+        
+        root.left,root.right=root.right,root.left
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
