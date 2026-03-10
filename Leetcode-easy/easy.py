@@ -681,6 +681,15 @@ def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
        if len(uniqueSortedArray)>1:
            return uniqueSortedArray[1]
        return -1
+
+def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
+        if cloned is None:
+            return None
+        if cloned.val == target.val:
+            return cloned
+        l=self.getTargetCopy(original,cloned.left,target)
+        r=self.getTargetCopy(original,cloned.right,target)
+        return l or r
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
