@@ -713,6 +713,23 @@ def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         if root.val==2:
             return l or r
         return l and r
+
+def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        ans:List[int]=[]
+        def dfs(node):
+            if node is None:
+                return
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+        dfs(root)
+        def makeTree(nums:List[int]):
+            if len(nums)==0:
+                return 
+            node:TreeNode=TreeNode(nums[0])
+            node.right=makeTree(nums[1:])
+            return node
+        return makeTree(ans)
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
