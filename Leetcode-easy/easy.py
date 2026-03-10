@@ -9,7 +9,7 @@ from tkinter import CURRENT, FIRST
 from token import LESS
 from tokenize import Double
 from turtle import Turtle
-from typing import List,Dict, Reversible,Tuple,Set
+from typing import List,Dict, Optional, Reversible,Tuple,Set
 from unicodedata import digit
 from xml.dom import minicompat
 from xmlrpc.client import MININT
@@ -435,7 +435,6 @@ def findThePrefixCommonArray( A: List[int], B: List[int]) -> List[int]:
             count+=1 if A[j] in temp else 0
         result.append(count)
     return result
-
 def largestInteger( num: int) -> int:
     numbers:List[int]=list(map(int,str(num)))
     even:List[int]=[]
@@ -474,7 +473,6 @@ def buyChoco(self, prices: List[int], money: int) -> int:
         if (prices[0]+prices[1])<=money:
             return money-(prices[0]+prices[1])
         return money
-
 def minimumDifference(nums: List[int], k: int) -> int:
         n=len(nums)
         if n==1:
@@ -486,7 +484,6 @@ def minimumDifference(nums: List[int], k: int) -> int:
             tempMin:int=max(tempArray)-min(tempArray)
             minDiff=min(minDiff,tempMin)
         return minDiff
-
 def reversePrefix(self, s: str, k: int) -> str:
         temp:List[str]=list(s)
         reversedArray:List[str]=list(reversed(temp[0:k]))
@@ -540,7 +537,6 @@ def largestEven(self, s: str) -> str:
             if s[i]=='2':
                 return s[:(i+1)]
         return ""
-
 def capitalizeTitle(self, title: str) -> str:
         title+=' '
         res:str=''
@@ -556,8 +552,6 @@ def capitalizeTitle(self, title: str) -> str:
                 word=''
                 
         return res[:len(res)-1]
-#00001111
-
 def digitSum(s: str, k: int) -> str:
     res:str=s
     while len(res)>k:
@@ -566,7 +560,6 @@ def digitSum(s: str, k: int) -> str:
             temp+=str(sum(list(map(int,res[i:i+k]))))
         res=temp
     return res
-
 def convertTime( current: str, correct: str) -> int:
     curr:List[int]=[]
     corr:List[int]=[]
@@ -592,7 +585,6 @@ def furthestDistanceFromOrigin(self, moves: str) -> int:
         countOfL:int=moves.count('L')
         countOfR:int=moves.count('R')
         return max(countOfL,countOfR)+(len(moves)-(countOfL+countOfR))-min(countOfL,countOfR)
-#def countBinarySubstrings(s: str) -> int:
 class MyHashSet:
 
     def __init__(self):
@@ -632,7 +624,6 @@ class MyHashMap:
             index=self.keys.index(key)
             del self.keys[index]
             del self.values[index]
-
 def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
         mpp1:Dict[str,int]={}
         mpp2:Dict[str,int]={}
@@ -667,7 +658,6 @@ def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
-
 def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
        ans:List[int]=[]
        def dfs(node):
@@ -681,7 +671,6 @@ def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
        if len(uniqueSortedArray)>1:
            return uniqueSortedArray[1]
        return -1
-
 def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
         if cloned is None:
             return None
@@ -691,7 +680,6 @@ def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) 
         r=self.getTargetCopy(original,cloned.right,target)
 
         return l or r
-
 def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         if root1 is None :
             return root2
@@ -701,7 +689,6 @@ def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Op
         node.left=self.mergeTrees(root1.left,root2.left)
         node.right=self.mergeTrees(root1.right,root2.right)
         return node
-
 def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         if root is None :
             return False
@@ -713,7 +700,6 @@ def evaluateTree(self, root: Optional[TreeNode]) -> bool:
         if root.val==2:
             return l or r
         return l and r
-
 def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         ans:List[int]=[]
         def dfs(node):
@@ -730,7 +716,6 @@ def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
             node.right=makeTree(nums[1:])
             return node
         return makeTree(ans)
-
 def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
         ans:List[int]=[0]
         def dfs(node:TreeNode,path:str):
@@ -743,16 +728,3 @@ def sumRootToLeaf(self, root: Optional[TreeNode]) -> int:
             dfs(node.right,path)
         dfs(root,'')
         return ans[0]
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(key,value)
-# param_2 = obj.get(key)
-# obj.remove(key)
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
-# obj.remove(key)
-# param_3 = obj.contains(key)
-
-#print(countBinarySubstrings("00001111"))
-#print(countBinarySubstrings(""))
