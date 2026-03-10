@@ -701,6 +701,18 @@ def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Op
         node.left=self.mergeTrees(root1.left,root2.left)
         node.right=self.mergeTrees(root1.right,root2.right)
         return node
+
+def evaluateTree(self, root: Optional[TreeNode]) -> bool:
+        if root is None :
+            return False
+        if root.left is None and root.right is None:
+            return root.val==1
+        l=self.evaluateTree(root.left)
+        r=self.evaluateTree(root.right)
+
+        if root.val==2:
+            return l or r
+        return l and r
 # Your MyHashMap object will be instantiated and called as such:
 # obj = MyHashMap()
 # obj.put(key,value)
