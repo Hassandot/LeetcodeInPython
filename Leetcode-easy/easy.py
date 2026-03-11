@@ -802,3 +802,19 @@ def findSubarrays(self, nums: List[int]) -> bool:
             if mpp[s]==2:
                 return True
         return False
+
+def minSubsequence(self, nums: List[int]) -> List[int]:
+        if len(nums)==1:
+            return nums
+        nums.sort(reverse=True)
+        res=[]
+        n=len(nums)
+        for i in range(n):
+            s1=sum(nums[0:i])
+            s2=sum(nums[i:])
+            if s1>s2:
+                res=nums[0:i]
+                break
+        if len(res)==0:
+            return nums
+        return res
