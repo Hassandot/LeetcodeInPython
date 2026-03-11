@@ -794,3 +794,11 @@ def maximumLengthSubstring(self, s: str) -> int:
             maxLength=max(maxLength,currentLength)
             starter=starter+1
         return maxLength
+def findSubarrays(self, nums: List[int]) -> bool:
+        mpp:Dict[int,int]={}
+        for i in range(len(nums)-1):
+            s=nums[i]+nums[i+1]
+            mpp[s]=mpp.get(s,0)+1
+            if mpp[s]==2:
+                return True
+        return False
