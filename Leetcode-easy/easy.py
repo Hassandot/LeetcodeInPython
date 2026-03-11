@@ -886,3 +886,19 @@ def minOperations(self, nums: List[int], k: int) -> int:
                     break
             count+=1
         return count    
+def isPathCrossing(self, path: str) -> bool:
+        mpp:Dict[str,Tuple[int,int]]={'N':(1,0),'E':(0,1),'S':(-1,0),'W':(0,-1)}
+        pointVisited:Set[Tuple[int,int]]=set()
+        origin:List[int]=[0,0]
+        pointVisited.add((0,0))
+        for ch in path:
+            idx=mpp[ch]
+            origin[0]+=idx[0]
+            origin[1]+=idx[1]
+            org=(origin[0],origin[1])
+            if org in pointVisited:
+                return True
+            else:
+                pointVisited.add(org)
+
+        return False
