@@ -848,3 +848,7 @@ def rearrangeCharacters(self, s: str, target: str) -> int:
             if flag:
                 break
         return count
+def average(self, salary: List[int]) -> float:
+        salary.sort()
+        n=len(salary)
+        return sum(salary[1:n-1])/(n-2)
