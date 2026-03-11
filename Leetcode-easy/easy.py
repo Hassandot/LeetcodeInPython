@@ -768,3 +768,12 @@ def minOperations(self, s: str) -> int:
             if arr2[i]!=int(s[i]):
                 m2+=1
         return min(m1,m2)
+
+def minimumPushes(self, word: str) -> int:
+        cost=1
+        total=0
+        for i in range(len(word)):
+            if i%8==0 and i!=0:
+                cost+=1
+            total+=cost
+        return total
