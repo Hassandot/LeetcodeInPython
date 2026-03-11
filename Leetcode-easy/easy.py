@@ -852,3 +852,26 @@ def average(self, salary: List[int]) -> float:
         salary.sort()
         n=len(salary)
         return sum(salary[1:n-1])/(n-2)
+
+def sortEvenOdd(self, nums: List[int]) -> List[int]:
+        odd,even=[],[]
+        n=len(nums)
+        for i in range(n):
+            if i&1:
+                odd.append(nums[i])
+            else:
+                even.append(nums[i])
+        odd.sort(reverse=True)
+        even.sort()
+        res=[0]*n
+        i=0
+        for num in even:
+            res[i]=num
+            i+=2
+        j=1
+        for num in odd:
+            res[j]=num
+            j+=2
+        return res
+
+        
