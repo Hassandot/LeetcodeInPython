@@ -818,3 +818,11 @@ def minSubsequence(self, nums: List[int]) -> List[int]:
         if len(res)==0:
             return nums
         return res
+
+def isPossibleToSplit(self, nums: List[int]) -> bool:
+        mpp:Dict[int,int]={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+            if mpp[num]==3:
+                return False
+        return True
