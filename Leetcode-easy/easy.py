@@ -826,3 +826,25 @@ def isPossibleToSplit(self, nums: List[int]) -> bool:
             if mpp[num]==3:
                 return False
         return True
+
+def rearrangeCharacters(self, s: str, target: str) -> int:
+        mpptar:Dict[str,int]={}
+        mpp:Dict[str,int]={}
+        for ch in s:
+            mpp[ch]=mpp.get(ch,0)+1
+        for ch in target:
+            mpptar[ch]=mpptar.get(ch,0)+1
+        count:int=0
+        while True:
+            flag=False
+            for (key,value) in mpptar.items():
+                if mpp.get(key,0)<value:
+                    flag=True
+                    break
+                else:
+                    mpp[key]-=value
+            if not flag :
+                count+=1
+            if flag:
+                break
+        return count
