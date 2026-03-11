@@ -745,3 +745,12 @@ def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
                     queue.append(node.right)
             res.append(level/level_size)
         return res
+
+def trimTrailingVowels(self, s: str) -> str:
+        r=-1
+        vowels=['a','e','i','o','u']
+        for i in range(len(s)-1,-1,-1):
+            if s[i] not in vowels:
+                r=i
+                break
+        return s[:r+1]
