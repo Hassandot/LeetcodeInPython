@@ -754,3 +754,17 @@ def trimTrailingVowels(self, s: str) -> str:
                 r=i
                 break
         return s[:r+1]
+def minOperations(self, s: str) -> int:
+        n=len(s)
+        arr1,arr2=[0]*n,[1]*n
+        for i in range(1,n,2):
+            arr1[i]=1
+            arr2[i]=0
+        m1,m2=0,0
+        for i in range(n):
+            if arr1[i]!=int(s[i]):
+                m1+=1
+        for i in range(n):
+            if arr2[i]!=int(s[i]):
+                m2+=1
+        return min(m1,m2)
