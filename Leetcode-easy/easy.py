@@ -874,4 +874,15 @@ def sortEvenOdd(self, nums: List[int]) -> List[int]:
             j+=2
         return res
 
-        
+def minOperations(self, nums: List[int], k: int) -> int:
+        count=0
+        to=[False]*(k+1)
+        to[0]=True
+        for i in range(len(nums)-1,-1,-1):
+            if nums[i]>=1 and nums[i]<=k:
+                to[nums[i]]=True
+                if all(to):
+                    count+=1
+                    break
+            count+=1
+        return count    
