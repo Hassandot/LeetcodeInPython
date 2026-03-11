@@ -777,3 +777,20 @@ def minimumPushes(self, word: str) -> int:
                 cost+=1
             total+=cost
         return total
+
+def maximumLengthSubstring(self, s: str) -> int:
+        maxLength=0
+        starter=0
+        n=len(s)
+        while starter<n:
+            mpp:Dict[str,int]={}
+            currentLength=0
+ 
+            for i in range(starter,n):
+                mpp[s[i]]=mpp.get(s[i],0)+1
+                if mpp[s[i]]>2:
+                    break
+                currentLength+=1
+            maxLength=max(maxLength,currentLength)
+            starter=starter+1
+        return maxLength
