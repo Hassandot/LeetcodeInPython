@@ -945,3 +945,17 @@ def findTilt(self, root: Optional[TreeNode]) -> int:
             return temp+l+r
         dfs(root)   
         return ans[0]
+def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+        ans=[]
+        def dfs(node):
+            if node is None:
+                return 
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+        dfs(root)
+        for i in range(len(ans)-1):
+            for j in range(i+1,len(ans)):
+                if ans[i]+ans[j]==k:
+                    return True
+        return False
