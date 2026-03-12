@@ -959,3 +959,19 @@ def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
                 if ans[i]+ans[j]==k:
                     return True
         return False
+
+def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+        ans=[]
+        def dfs(node):
+            if node is None:
+                return 
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
+        dfs(root)
+        md=float('inf')
+        for i in range(len(ans)-1):
+            for j in range(i+1,len(ans)):
+                md=min(md,ans[j]-ans[i])
+        return md
+            
