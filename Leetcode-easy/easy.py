@@ -902,3 +902,14 @@ def isPathCrossing(self, path: str) -> bool:
                 pointVisited.add(org)
 
         return False
+
+def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
+        ans=[]
+        def dfs(node):
+            if node is None:
+                return 
+            ans.append(node.val)
+            dfs(node.left)
+            dfs(node.right)
+        dfs(root)
+        return len(set(ans))==1
