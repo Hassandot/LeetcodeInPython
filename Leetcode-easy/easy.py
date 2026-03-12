@@ -913,3 +913,22 @@ def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
             dfs(node.right)
         dfs(root)
         return len(set(ans))==1
+def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        ans1,ans2=[],[]
+        def dfs1(node):
+            if node is None:
+                return
+            if node.left is None and node.right is None:
+                ans1.append(node.val)
+            dfs1(node.left)
+            dfs1(node.right)
+        def dfs2(node):
+            if node is None:
+                return
+            if node.left is None and node.right is None:
+                ans2.append(node.val)
+            dfs2(node.left)
+            dfs2(node.right)
+        dfs1(root1)
+        dfs2(root2)
+        return ans1==ans2
