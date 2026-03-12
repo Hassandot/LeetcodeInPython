@@ -932,3 +932,16 @@ def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> b
         dfs1(root1)
         dfs2(root2)
         return ans1==ans2
+
+def findTilt(self, root: Optional[TreeNode]) -> int:
+        ans=[0]
+        def dfs(node):
+            if node is None:
+                return 0
+            l=dfs(node.left)
+            r=dfs(node.right)
+            temp=node.val
+            ans[0]+=abs(l-r)
+            return temp+l+r
+        dfs(root)   
+        return ans[0]
