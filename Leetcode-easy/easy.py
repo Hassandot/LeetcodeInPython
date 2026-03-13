@@ -974,4 +974,26 @@ def minDiffInBST(self, root: Optional[TreeNode]) -> int:
             for j in range(i+1,len(ans)):
                 md=min(md,ans[j]-ans[i])
         return md
-            
+def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return None
+        queue:Deque[TreeNode]=deque([root])
+        level:int=0
+        while queue:
+            level_size:int=len(queue)
+            level_nodes:List[TreeNode]=[]
+            level_vals:List[int]=[]
+            for i in range(level_size):
+                node:TreeNode=queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+                level_nodes.append(node)
+                level_vals.append(node.val)
+            if level&1:
+                level_nodes.reverse()
+                for i,node in enumerate(level_nodes):
+                    node.val=level_vals[i]
+            level+=1
+        return root
