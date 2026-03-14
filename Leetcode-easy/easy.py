@@ -1017,3 +1017,25 @@ def subsets(self, nums: List[int]) -> List[List[int]]:
         res.append([])
         bt(0,[])
         return res
+def combine(self, n: int, k: int) -> List[List[int]]:
+        res=[]
+        nums=[i for i in range(1,n+1)]
+        used=[False]*len(nums)
+        def bt(start,current):
+            if len(current)==k:
+                res.append(current)
+                return 
+            needed=k-len(current)
+            remaining=len(nums)-start
+            if remaining<needed:
+                return
+
+            for i in range(start,len(nums)):
+                if not used[i]:
+                    used[i]=True
+                    newCurr=copy.copy(current)
+                    newCurr.append(nums[i])
+                    bt(i+1,newCurr)
+                    used[i]=False
+        bt(0,[])
+        return res
