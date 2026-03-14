@@ -547,3 +547,18 @@ def permute(self, nums: List[int]) -> List[List[int]]:
             
         backtrack([])
         return res
+def letterCasePermutation(self, s: str) -> List[str]:
+        res=[]
+        k=len(s)
+        def bt(start,current):
+            if len(current)==k:
+                res.append(current)
+                return 
+            
+            if s[start].isdigit():
+                bt(start+1,current+s[start])
+            else:
+                bt(start+1,current+s[start].lower())
+                bt(start+1,current+s[start].upper())
+        bt(0,'')
+        return res
