@@ -975,6 +975,7 @@ def minDiffInBST(self, root: Optional[TreeNode]) -> int:
                 md=min(md,ans[j]-ans[i])
         return md
 def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        
         if root is None:
             return None
         queue:Deque[TreeNode]=deque([root])
@@ -997,3 +998,22 @@ def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
                     node.val=level_vals[i]
             level+=1
         return root
+
+
+def subsets(self, nums: List[int]) -> List[List[int]]:
+        res:List[List[int]]=[]
+        used:List[bool]=[False]*len(nums)
+
+        def bt(start,current):
+            if current:
+                res.append(current)
+            for i in range(start,len(nums)):
+                if not used[i]:
+                    used[i]=True
+                    newCurr=copy.copy(current)
+                    newCurr.append(nums[i])
+                    bt(i+1,newCurr)
+                    used[i]=False
+        res.append([])
+        bt(0,[])
+        return res
