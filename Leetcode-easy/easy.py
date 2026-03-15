@@ -1086,5 +1086,27 @@ def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
             if data[0] not in banned:
                 return data[0]
         return ''
-
+def lemonadeChange(self, bills: List[int]) -> bool:
+        mpp:Dict[int,int]={}
+        for bill in bills:
+            if bill==5:
+                mpp[bill]=mpp.get(bill,0)+1
+                continue
+            elif bill==10:
+                if mpp.get(5,0)>0:
+                    mpp[10]=mpp.get(10,0)+1
+                    mpp[5]-=1
+                    continue
+                else:
+                    return False
+            else:
+                if mpp.get(10,0)>0 and mpp.get(5,0)>0:
+                    mpp[10]-=1
+                    mpp[5]-=1
+                    continue
+                elif mpp.get(5,0)>=3:
+                    mpp[5]-=3
+                    continue
+                return False
+        return True
 
