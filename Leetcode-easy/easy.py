@@ -1040,3 +1040,14 @@ def combine(self, n: int, k: int) -> List[List[int]]:
         bt(0,[])
         return res
 
+def findLengthOfLCIS(self, nums: List[int]) -> int:
+        maxLen:int=0
+        for i in range(len(nums)):
+            curr=1
+            for j in range(i,len(nums)-1):
+                if nums[j]<nums[j+1]:
+                    curr+=1
+                else:
+                    break
+            maxLen=max(maxLen,curr)
+        return maxLen
