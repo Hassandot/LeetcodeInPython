@@ -1062,3 +1062,24 @@ def isOneBitCharacter(self, nums: List[int]) -> bool:
                 flag=True
                 i+=1
         return flag
+def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+        m=len(matrix)
+        n=len(matrix[0])
+        def sortDiagonal(row:int,col:int):
+            dg:List[int]=[]
+            i,j=row,col
+            while i<m and j<n:
+                dg.append(matrix[i][j])
+                i+=1
+                j+=1
+            return all(x==dg[0] for x in dg)
+        flag=True
+        for i in range(n):
+            flag=(flag and sortDiagonal(0,i))
+            if not flag:
+                return flag
+        for i in range(1,m):
+            flag = (flag and sortDiagonal(i,0))
+            if not flag :
+                return flag
+        return flag
