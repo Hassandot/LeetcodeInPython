@@ -1051,3 +1051,14 @@ def findLengthOfLCIS(self, nums: List[int]) -> int:
                     break
             maxLen=max(maxLen,curr)
         return maxLen
+def isOneBitCharacter(self, nums: List[int]) -> bool:
+        flag=False
+        i=0
+        while i<len(nums):
+            if nums[i]==1:
+                i+=2
+                flag=False
+            else:
+                flag=True
+                i+=1
+        return flag
