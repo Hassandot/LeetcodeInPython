@@ -1083,3 +1083,20 @@ def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
             if not flag :
                 return flag
         return flag
+def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        paragraph+=' '
+        word:str=''
+        mpp:Dict[str,int]={}
+        for ch in paragraph:
+            if ch.isalpha():
+                word+=ch.lower()
+            else:
+                if word:
+                    mpp[word]=mpp.get(word,0)+1
+                word=''
+        tempList:List[Tuple[str,int]]=[(key,value) for (key,value) in mpp.items()]
+        temp=sorted(tempList,reverse=True,key=lambda x:x[1])
+        for data in temp:
+            if data[0] not in banned:
+                return data[0]
+        return ''
