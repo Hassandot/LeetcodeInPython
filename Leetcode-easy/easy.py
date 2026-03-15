@@ -745,7 +745,6 @@ def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
                     queue.append(node.right)
             res.append(level/level_size)
         return res
-
 def trimTrailingVowels(self, s: str) -> str:
         r=-1
         vowels=['a','e','i','o','u']
@@ -768,7 +767,6 @@ def minOperations(self, s: str) -> int:
             if arr2[i]!=int(s[i]):
                 m2+=1
         return min(m1,m2)
-
 def minimumPushes(self, word: str) -> int:
         cost=1
         total=0
@@ -777,7 +775,6 @@ def minimumPushes(self, word: str) -> int:
                 cost+=1
             total+=cost
         return total
-
 def maximumLengthSubstring(self, s: str) -> int:
         maxLength=0
         starter=0
@@ -802,7 +799,6 @@ def findSubarrays(self, nums: List[int]) -> bool:
             if mpp[s]==2:
                 return True
         return False
-
 def minSubsequence(self, nums: List[int]) -> List[int]:
         if len(nums)==1:
             return nums
@@ -818,7 +814,6 @@ def minSubsequence(self, nums: List[int]) -> List[int]:
         if len(res)==0:
             return nums
         return res
-
 def isPossibleToSplit(self, nums: List[int]) -> bool:
         mpp:Dict[int,int]={}
         for num in nums:
@@ -826,7 +821,6 @@ def isPossibleToSplit(self, nums: List[int]) -> bool:
             if mpp[num]==3:
                 return False
         return True
-
 def rearrangeCharacters(self, s: str, target: str) -> int:
         mpptar:Dict[str,int]={}
         mpp:Dict[str,int]={}
@@ -852,7 +846,6 @@ def average(self, salary: List[int]) -> float:
         salary.sort()
         n=len(salary)
         return sum(salary[1:n-1])/(n-2)
-
 def sortEvenOdd(self, nums: List[int]) -> List[int]:
         odd,even=[],[]
         n=len(nums)
@@ -873,7 +866,6 @@ def sortEvenOdd(self, nums: List[int]) -> List[int]:
             res[j]=num
             j+=2
         return res
-
 def minOperations(self, nums: List[int], k: int) -> int:
         count=0
         to=[False]*(k+1)
@@ -902,7 +894,6 @@ def isPathCrossing(self, path: str) -> bool:
                 pointVisited.add(org)
 
         return False
-
 def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
         ans=[]
         def dfs(node):
@@ -931,8 +922,7 @@ def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> b
             dfs2(node.right)
         dfs1(root1)
         dfs2(root2)
-        return ans1==ans2
-
+        return ans1==ans
 def findTilt(self, root: Optional[TreeNode]) -> int:
         ans=[0]
         def dfs(node):
@@ -959,7 +949,6 @@ def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
                 if ans[i]+ans[j]==k:
                     return True
         return False
-
 def minDiffInBST(self, root: Optional[TreeNode]) -> int:
         ans=[]
         def dfs(node):
@@ -998,8 +987,6 @@ def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
                     node.val=level_vals[i]
             level+=1
         return root
-
-
 def subsets(self, nums: List[int]) -> List[List[int]]:
         res:List[List[int]]=[]
         used:List[bool]=[False]*len(nums)
@@ -1039,7 +1026,6 @@ def combine(self, n: int, k: int) -> List[List[int]]:
                     used[i]=False
         bt(0,[])
         return res
-
 def findLengthOfLCIS(self, nums: List[int]) -> int:
         maxLen:int=0
         for i in range(len(nums)):
@@ -1100,3 +1086,5 @@ def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
             if data[0] not in banned:
                 return data[0]
         return ''
+
+
