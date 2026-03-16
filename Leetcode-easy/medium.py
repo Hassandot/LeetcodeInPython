@@ -562,3 +562,21 @@ def letterCasePermutation(self, s: str) -> List[str]:
                 bt(start+1,current+s[start].upper())
         bt(0,'')
         return res
+
+
+
+def getHappyString( n: int, k: int) -> str:
+        res=[]
+        def bt(current):
+            if len(current)==n:
+                res.append(current)
+                return 
+            for ch in 'abc':
+                if current and current[-1]==ch:
+                    continue
+                bt(current+ch)
+        bt('')
+        if len(res)>=k:
+            return res[k-1]
+        return ''
+
