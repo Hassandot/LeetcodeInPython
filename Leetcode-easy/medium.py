@@ -580,3 +580,22 @@ def getHappyString( n: int, k: int) -> str:
             return res[k-1]
         return ''
 
+def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        res=[]
+        mpp={}
+        r=len(nums)
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        def bt(current):
+            if r==len(current):
+                res.append(current)
+                return
+            for num in mpp:
+                if mpp[num]>0:
+                    mpp[num]-=1
+                    newCurr=current[:]
+                    newCurr.append(num)
+                    bt(newCurr)
+                    mpp[num]+=1
+        bt([])
+        return res
