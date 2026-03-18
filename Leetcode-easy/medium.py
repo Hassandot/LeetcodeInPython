@@ -759,4 +759,14 @@ def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
             return node
         return makeTree(arr)
 
-            
+def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
+        def dfs(arr):
+            if len(arr)==0:
+                return None
+            m=max(arr)
+            idx=arr.index(m)
+            node:TreeNode=TreeNode(m)
+            node.left=dfs(arr[:idx])
+            node.right=dfs(arr[idx+1:])
+            return node
+        return dfs(nums)
