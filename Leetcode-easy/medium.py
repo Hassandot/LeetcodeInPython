@@ -739,3 +739,24 @@ def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
             dfs(node.right,depth)
         dfs(root)
         return total[0]
+def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        arr=[]
+        def dfs(node):
+            if node is None:
+                return
+            dfs(node.left)
+            arr.append(node.val)
+            dfs(node.right)
+        arr.sort()
+        dfs(root)
+        def makeTree(nums):
+            if len(nums)==0:
+                return None
+            mid=len(nums)//2
+            node:TreeNode=TreeNode(nums[mid])
+            node.left=makeTree(nums[:mid])
+            node.right=makeTree(nums[mid+1:])
+            return node
+        return makeTree(arr)
+
+            
