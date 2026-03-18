@@ -691,3 +691,30 @@ def findSubsequences(self, nums: List[int]) -> List[List[int]]:
 
         bt(0,[])
         return res
+
+def bstToGst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        arr=[]
+        def dfs(node):
+            if node is None:
+                return
+            dfs(node.left)
+            arr.append(node.val)
+            dfs(node.right)
+        dfs(root)
+        prefix=[0]*(len(arr)+1)
+        arr.reverse()
+        for i in range(1,len(prefix)):
+            prefix[i]=prefix[i-1]+arr[i-1]
+        gst=prefix[1:]
+        gst.reverse()
+        idx=[0]
+        def insertionInBST(node,i):
+            if node is None:
+                return
+            insertionInBST(node.left,i+1)
+            node.val=gst[idx[0]]
+            idx[0]+=1
+            insertionInBST(node.right,i+1)
+        dfs(root)
+        insertionInBST(root,0)
+        return root
