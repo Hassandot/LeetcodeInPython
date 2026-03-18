@@ -784,4 +784,25 @@ def sortColors(self, nums: List[int]) -> None:
             for i in range(mpp[s[0]]):
                 nums[idx]=s[0]
                 idx+=1
+def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        m=len(matrix)
+        n=len(matrix[0])
+        indexes=[]
         
+        def makezero(row,col):
+            for i in range(n):
+                matrix[row][i]=0
+                
+            for i in range(m):
+                matrix[i][col]=0
+                
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]==0:
+                    indexes.append((i,j))
+
+        for i,j in indexes:
+            makezero(i,j)    
