@@ -673,3 +673,21 @@ def numTilePossibilities(self, tiles: str) -> int:
                     mpp[t]+=1
         bt([])
         return len(res)
+
+def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res=[]
+        def bt(start,current):
+            seen=set()
+            if len(current)>=2:
+                res.append(current)
+            for i in range(start,len(nums)):
+                if nums[i] in seen:
+                    continue
+                if not current or nums[i]>=current[-1]:
+                    seen.add(nums[i])
+                    newCurr=current[:]
+                    newCurr.append(nums[i])
+                    bt(i+1,newCurr)
+
+        bt(0,[])
+        return res
