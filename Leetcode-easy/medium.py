@@ -806,3 +806,13 @@ def setZeroes(self, matrix: List[List[int]]) -> None:
 
         for i,j in indexes:
             makezero(i,j)    
+def majorityElement(self, nums: List[int]) -> List[int]:
+        k=len(nums)//3
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        res=[]
+        for key,value in mpp.items():
+            if value>k:
+                res.append(key)
+        return res
