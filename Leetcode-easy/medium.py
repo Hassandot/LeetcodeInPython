@@ -770,3 +770,18 @@ def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
             node.right=dfs(arr[idx+1:])
             return node
         return dfs(nums)
+def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        sor=[(key,value) for key,value in mpp.items()]
+        sor.sort(key=lambda x:x[0])
+        idx=0
+        for s in sor:
+            for i in range(mpp[s[0]]):
+                nums[idx]=s[0]
+                idx+=1
+        
