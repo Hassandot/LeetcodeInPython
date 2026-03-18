@@ -715,6 +715,27 @@ def bstToGst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
             node.val=gst[idx[0]]
             idx[0]+=1
             insertionInBST(node.right,i+1)
-        dfs(root)
+        
         insertionInBST(root,0)
         return root
+
+def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+        
+        def getHeight(node):
+            if node is None:
+                return 0
+            l=getHeight(node.left)
+            r=getHeight(node.right)
+            return 1+max(l,r)
+        maxHeight=getHeight(root)
+        total=[0]
+        def dfs(node,depth=1):
+            if node is None:
+                return
+            if depth==maxHeight:
+                total[0]+=node.val
+            depth+=1
+            dfs(node.left,depth)
+            dfs(node.right,depth)
+        dfs(root)
+        return total[0]
