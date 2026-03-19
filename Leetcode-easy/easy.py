@@ -1109,4 +1109,20 @@ def lemonadeChange(self, bills: List[int]) -> bool:
                     continue
                 return False
         return True
+def oddString(self, words: List[str]) -> str:
+        mpp:Dict[Tuple[int,...],List[str]]={}
+        digits:List[int]=[i for i in range(26)]
+        alphabets:str='abcdefghijklmnopqrstuvwxyz'
 
+        mppalpha:Dict[str,int]=dict(zip(alphabets,digits))
+        for word in words:
+            curr:List[int]=[]
+            for i in range(1,len(word)):
+                curr.append(mppalpha[word[i]]-mppalpha[word[i-1]])
+            curr=tuple(curr)
+            mpp[curr]=mpp.get(curr,[])
+            mpp[curr].append(word)
+        for key,value in mpp.items():
+            if len(value)==1:
+                return value[0]
+        return ''
