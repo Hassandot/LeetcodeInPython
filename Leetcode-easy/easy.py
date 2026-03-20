@@ -1113,7 +1113,6 @@ def oddString(self, words: List[str]) -> str:
         mpp:Dict[Tuple[int,...],List[str]]={}
         digits:List[int]=[i for i in range(26)]
         alphabets:str='abcdefghijklmnopqrstuvwxyz'
-
         mppalpha:Dict[str,int]=dict(zip(alphabets,digits))
         for word in words:
             curr:List[int]=[]
@@ -1126,3 +1125,22 @@ def oddString(self, words: List[str]) -> str:
             if len(value)==1:
                 return value[0]
         return ''
+def minDistinctFreqPair(self, nums: list[int]) -> list[int]:
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        sv=[(key,value) for key,value in mpp.items()]
+        sv.sort(key=lambda x: x[0])
+        pairsxy=[]
+        pairsfre=[]
+        for p in sv:
+            if len(pairsxy)==0:
+                pairsxy.append(p[0])
+                pairsfre.append(p[1])
+                continue
+            if p[1] not in pairsfre:
+                pairsxy.append(p[0])
+                pairsfre.append(p[1])
+        if len(pairsxy)<2:
+            return [-1,-1]
+        return [pairsxy[0],pairsxy[1]]
