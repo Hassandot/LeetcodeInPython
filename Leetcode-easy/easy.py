@@ -1144,3 +1144,8 @@ def minDistinctFreqPair(self, nums: list[int]) -> list[int]:
         if len(pairsxy)<2:
             return [-1,-1]
         return [pairsxy[0],pairsxy[1]]
+def isGood(self, nums: List[int]) -> bool:
+        mn=max(nums)
+        arr=[i for i in range(1,mn+1)]
+        arr.append(mn)
+        return arr==sorted(nums)
