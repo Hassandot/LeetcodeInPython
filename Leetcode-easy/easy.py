@@ -1149,3 +1149,12 @@ def isGood(self, nums: List[int]) -> bool:
         arr=[i for i in range(1,mn+1)]
         arr.append(mn)
         return arr==sorted(nums)
+def minimumIndex(self, capacity: list[int], itemSize: int) -> int:
+        arr=[]
+        for i in range(len(capacity)):
+            arr.append((capacity[i],i))
+        arr.sort(key=lambda x:x[0])
+        for p in arr:
+            if p[0]>=itemSize:
+                return p[1]            
+        return -1
