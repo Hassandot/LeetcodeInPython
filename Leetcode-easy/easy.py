@@ -1158,3 +1158,11 @@ def minimumIndex(self, capacity: list[int], itemSize: int) -> int:
             if p[0]>=itemSize:
                 return p[1]            
         return -1
+def findValidPair(self, s: str) -> str:
+        mpp={}
+        for ch in s:
+            mpp[ch]=mpp.get(ch,0)+1
+        for i in range(len(s)-1):
+            if s[i]!=s[i+1] and mpp[s[i]]==int(s[i]) and mpp[s[i+1]]==int(s[i+1]):
+                return s[i]+s[i+1]
+        return ''
