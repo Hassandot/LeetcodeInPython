@@ -1166,3 +1166,13 @@ def findValidPair(self, s: str) -> str:
             if s[i]!=s[i+1] and mpp[s[i]]==int(s[i]) and mpp[s[i+1]]==int(s[i+1]):
                 return s[i]+s[i+1]
         return ''
+def minimumCost(self, cost: List[int]) -> int:
+        if len(cost)<=2:
+            return sum(cost)
+        cost.sort(reverse=True)
+        res=0
+        for i in range(0,len(cost)-(len(cost)%3),3):
+            res+=cost[i]
+            res+=cost[i+1]
+        res+=sum(cost[len(cost)-len(cost)%3:])
+        return res
