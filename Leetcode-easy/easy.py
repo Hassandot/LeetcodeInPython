@@ -1176,3 +1176,13 @@ def minimumCost(self, cost: List[int]) -> int:
             res+=cost[i+1]
         res+=sum(cost[len(cost)-len(cost)%3:])
         return res
+def firstUniqueEven(self, nums: list[int]) -> int:
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        arr:List[Tuple[int,int]]=[(key,value) for key,value in mpp.items()]
+        arr.sort(key=lambda x:x[1])
+        for item in arr:
+            if item[1]==1 and item[0]%2==0:
+                return item[0]
+        return -1
