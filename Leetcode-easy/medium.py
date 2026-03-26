@@ -833,3 +833,17 @@ def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
                     queue.append(node.right)
             res.append(level)
         return res
+
+def getAllElements(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> List[int]:
+        arr1=[]
+        arr2=[]
+        def dfs(node,arr):
+            if node is None:
+                return
+            arr.append(node.val)
+            dfs(node.left,arr)
+            dfs(node.right,arr)
+        dfs(root1,arr1)
+        dfs(root2,arr2)
+        arr=arr1+arr2
+        return sorted(arr)
