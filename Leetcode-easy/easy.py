@@ -1186,3 +1186,11 @@ def firstUniqueEven(self, nums: list[int]) -> int:
             if item[1]==1 and item[0]%2==0:
                 return item[0]
         return -1
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+        mpp={}
+        for i in range(len(nums)):
+            if target-nums[i] in mpp:
+                return [mpp[target-nums[i]],i]
+            else:
+                mpp[nums[i]]=i
+        return []
