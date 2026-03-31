@@ -847,3 +847,17 @@ def getAllElements(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -
         dfs(root2,arr2)
         arr=arr1+arr2
         return sorted(arr)
+
+
+def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        arr=[(key,value) for key,value in mpp.items()]
+        arr.sort(reverse=True,key=lambda x:x[1])
+        res=[]
+        for i,x in enumerate(arr):
+            if i==k:
+                break
+            res.append(x[0])
+        return res  
