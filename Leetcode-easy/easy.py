@@ -1205,3 +1205,14 @@ def pivotInteger(self, n: int) -> int:
                 return nums[i]
             totalsum-=nums[i]
         return -1
+
+def scoreBalance(self, s: str) -> bool:
+        prefix=[0]*(len(s)+1)
+        for i in range(len(s)):
+            prefix[i+1]=prefix[i]+(ord(s[i])-96)
+        suffixSum=0
+        for i in reversed(range(len(s))):
+            suffixSum+=(ord(s[i])-96)
+            if suffixSum==prefix[i]:
+                return True
+        return False
