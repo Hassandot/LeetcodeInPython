@@ -1194,3 +1194,14 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
             else:
                 mpp[nums[i]]=i
         return []
+
+def pivotInteger(self, n: int) -> int:
+        nums=range(1,n+1)
+        totalsum=sum(nums)
+        suffixSum=0
+        for i in reversed(range(len(nums))):
+            suffixSum+=nums[i]
+            if totalsum==suffixSum:
+                return nums[i]
+            totalsum-=nums[i]
+        return -1

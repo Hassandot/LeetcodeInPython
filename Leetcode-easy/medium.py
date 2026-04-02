@@ -872,3 +872,5 @@ def productExceptSelf(self, nums: List[int]) -> List[int]:
         for i in range(len(nums)):
             res.append(prefix[i]*suffix[i+1])
         return res
+
+
