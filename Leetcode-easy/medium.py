@@ -872,5 +872,19 @@ def productExceptSelf(self, nums: List[int]) -> List[int]:
         for i in range(len(nums)):
             res.append(prefix[i]*suffix[i+1])
         return res
-
+def minOperations(self, nums: List[int]) -> int:
+        count=0
+        n=len(nums)
+        for i in range(n):
+            if nums[i]==0 and i!=n-2 and i!=n-1:
+                count+=1
+                nums[i]=1
+                if i+1<n:
+                    nums[i+1]=nums[i+1]^1
+                if i+2<n:
+                    nums[i+2]=nums[i+2]^1
+        res=all(x==1 for x in nums)
+        if res:
+            return count
+        return -1
 
