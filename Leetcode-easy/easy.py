@@ -1216,3 +1216,16 @@ def scoreBalance(self, s: str) -> bool:
             if suffixSum==prefix[i]:
                 return True
         return False
+
+def isValid(self, s: str) -> bool:
+        stack=[]
+        mpp={'}':'{',']':'[',')':'('}
+        for i in range(len(s)):
+            if s[i]=='(' or s[i]=='{' or s[i]=='[':
+                stack.append(s[i])
+            else:
+                if len(stack)==0 or stack.pop()!=mpp[s[i]]:
+                    return False
+        if len(stack)!=0:
+            return False
+        return True
