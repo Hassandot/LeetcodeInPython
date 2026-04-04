@@ -935,3 +935,21 @@ def dailyTemperatures(self, t: List[int]) -> List[int]:
                     stack.pop()
                 stack.append(i)
         return res
+class StockSpanner:
+
+    def __init__(self):
+        self.prices=[]
+        self.stack=[]
+        self.index=0
+    def next(self, price: int) -> int:
+        self.prices.append(price)
+        while self.stack and self.prices[self.stack[-1]]<=price:
+            self.stack.pop()
+        res=0
+        if not self.stack:
+            res=self.index+1
+        else:
+            res=self.index-self.stack[-1]
+        self.stack.append(self.index)
+        self.index+=1
+        return res
