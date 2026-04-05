@@ -1229,3 +1229,20 @@ def isValid(self, s: str) -> bool:
         if len(stack)!=0:
             return False
         return True
+
+def minChanges(self, n: int, k: int) -> int:
+        num1=format(n,'0b')
+        num2=format(k,'0b')
+        if len(num1)>len(num2):
+            pad=['0']*(len(num1)-len(num2))
+            num2=''.join(pad)+num2
+        else:
+            pad=['0']*(len(num2)-len(num1))
+            num1=''.join(pad)+num1
+        count=0
+        for i in range(len(num1)-1,-1,-1):
+            if num1[i]=='1' and num2[i]=='0':
+                count+=1
+            elif num1[i]=='0' and num2[i]=='1':
+                return -1
+        return count
