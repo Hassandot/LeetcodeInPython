@@ -1246,3 +1246,14 @@ def minChanges(self, n: int, k: int) -> int:
             elif num1[i]=='0' and num2[i]=='1':
                 return -1
         return count
+
+def countElements(self, nums: List[int]) -> int:
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        arr=sorted(list(set(nums)))
+        res=0
+        for i in range(1,len(arr)-1):
+            res+=mpp[arr[i]]
+        return res
+        
