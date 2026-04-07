@@ -1256,4 +1256,19 @@ def countElements(self, nums: List[int]) -> int:
         for i in range(1,len(arr)-1):
             res+=mpp[arr[i]]
         return res
-        
+def sortByReflection(self, nums: List[int]) -> List[int]:
+        mpp={}
+        for num in nums:
+            b=list(format(num,'0b'))
+            b.reverse()
+            key=int(''.join(map(str,b)),2)
+            mpp[key]=mpp.get(key,[])
+            mpp[key].append(num)
+        ss=sorted([(key,value) for key,value in mpp.items()],key=lambda x:x[0])
+        for s in ss:
+            s[1].sort(reverse=False)
+        res=[]
+        for s in ss:
+            for i in range(len(s[1])):
+                res.append(s[1][i])
+        return res
