@@ -953,3 +953,14 @@ class StockSpanner:
         self.stack.append(self.index)
         self.index+=1
         return res
+def xorAfterQueries(self, nums: List[int], queries: List[List[int]]) -> int:
+        MOD=10**9+7
+        for q in queries:
+            idx=q[0]
+            while idx<=q[1]:
+                nums[idx]=(nums[idx]*q[3])%MOD
+                idx+=q[2]
+        res=0
+        for num in nums:
+            res^=num
+        return res
