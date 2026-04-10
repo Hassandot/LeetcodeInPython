@@ -1272,3 +1272,17 @@ def sortByReflection(self, nums: List[int]) -> List[int]:
             for i in range(len(s[1])):
                 res.append(s[1][i])
         return res
+
+def minimumDistance(self, nums: List[int]) -> int:
+        if len(nums)<3:
+            return -1
+        mpp={}
+        for i,num in enumerate(nums):
+            mpp[num]=mpp.get(num,[])
+            mpp[num].append(i)
+        res=float('inf')
+        for p in mpp.items():
+            if len(p[1])>=3:
+                for i in range(len(p[1])-2):
+                    res=min(res,abs(p[1][i] - p[1][i+1]) + abs(p[1][i+1] - p[1][i+2]) + abs(p[1][i+2] - p[1][i]))
+        return res if res!=float('inf') else -1
