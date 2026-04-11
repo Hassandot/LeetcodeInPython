@@ -1301,3 +1301,10 @@ def sum(self, num1: int, num2: int) -> int:
         return num1+num2
 def mirrorDistance(self, n: int) -> int:
         return abs(n-int(str(n)[::-1]))
+def subtractProductAndSum(self, n: int) -> int:
+        arr=str(n)
+        pro,summ=1,0
+        for num in arr:
+            pro*=int(num)
+            summ+=int(num)
+        return pro-summ
