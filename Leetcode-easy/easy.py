@@ -1290,3 +1290,10 @@ def convertTemperature(self, celsius: float) -> List[float]:
         return [celsius+273.15,celsius*1.80+32.00]
 def theMaximumAchievableX(self, num: int, t: int) -> int:
         return num+(t*2)
+def findClosest(self, x: int, y: int, z: int) -> int:
+        x1,x2=abs(z-x),abs(z-y)
+        if x1==x2:
+            return 0
+        elif x1<x2:
+            return 1
+        return 2
