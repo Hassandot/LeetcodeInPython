@@ -1288,3 +1288,5 @@ def minimumDistance(self, nums: List[int]) -> int:
         return res if res!=float('inf') else -1
 def convertTemperature(self, celsius: float) -> List[float]:
         return [celsius+273.15,celsius*1.80+32.00]
+def theMaximumAchievableX(self, num: int, t: int) -> int:
+        return num+(t*2)
