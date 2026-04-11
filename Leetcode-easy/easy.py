@@ -1297,3 +1297,5 @@ def findClosest(self, x: int, y: int, z: int) -> int:
         elif x1<x2:
             return 1
         return 2
+def sum(self, num1: int, num2: int) -> int:
+        return num1+num2
