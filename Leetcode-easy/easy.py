@@ -1299,3 +1299,5 @@ def findClosest(self, x: int, y: int, z: int) -> int:
         return 2
 def sum(self, num1: int, num2: int) -> int:
         return num1+num2
+def mirrorDistance(self, n: int) -> int:
+        return abs(n-int(str(n)[::-1]))
