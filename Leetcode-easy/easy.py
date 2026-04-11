@@ -1286,3 +1286,5 @@ def minimumDistance(self, nums: List[int]) -> int:
                 for i in range(len(p[1])-2):
                     res=min(res,abs(p[1][i] - p[1][i+1]) + abs(p[1][i+1] - p[1][i+2]) + abs(p[1][i+2] - p[1][i]))
         return res if res!=float('inf') else -1
+def convertTemperature(self, celsius: float) -> List[float]:
+        return [celsius+273.15,celsius*1.80+32.00]
