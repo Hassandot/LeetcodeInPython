@@ -1364,3 +1364,17 @@ def gcdOfOddEvenSums(self, n: int) -> int:
 def sumOfTheDigitsOfHarshadNumber(self, x: int) -> int:
         s=sum(map(int,str(x)))
         return s if x%s==0 else -1
+def countSymmetricIntegers(self, low: int, high: int) -> int:
+        count=0
+        for i in range(low,high+1):
+            n=str(i)
+            x=len(n)
+            if not x&1:
+                number=list(map(int,n))
+                leftSum=sum(number[:x//2])
+                rightSum=sum(number[x//2:])
+
+                if leftSum==rightSum:
+                    count+=1
+        return count
+
