@@ -1377,4 +1377,9 @@ def countSymmetricIntegers(self, low: int, high: int) -> int:
                 if leftSum==rightSum:
                     count+=1
         return count
-
+def getDecimalValue(self, head: Optional[ListNode]) -> int:
+        number=''
+        while head != None:
+            number+=str(head.val)
+            head=head.next
+        return int(number,2)
