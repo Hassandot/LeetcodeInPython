@@ -1361,3 +1361,6 @@ def gcd_cal(self,dividend,divisor):
 
 def gcdOfOddEvenSums(self, n: int) -> int:
         return self.gcd_cal(self.oddPrefix[n],self.evenPrefix[n])
+def sumOfTheDigitsOfHarshadNumber(self, x: int) -> int:
+        s=sum(map(int,str(x)))
+        return s if x%s==0 else -1
