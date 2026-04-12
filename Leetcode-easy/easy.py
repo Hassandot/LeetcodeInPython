@@ -1331,3 +1331,10 @@ def sumOfMultiples(self, n: int) -> int:
                 res+=i
                 continue
         return res 
+def countDigits(self, num: int) -> int:
+        count=0
+        number=str(num)
+        for digit in number:
+            if num%int(digit)==0:
+                count+=1
+        return count
