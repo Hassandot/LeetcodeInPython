@@ -1383,3 +1383,11 @@ def getDecimalValue(self, head: Optional[ListNode]) -> int:
             number+=str(head.val)
             head=head.next
         return int(number,2)
+def totalMoney(self, n: int) -> int:
+        weeks=n//7
+        remainingDays=n%7
+        money=0
+        for i in range(1,weeks+1):
+            money+=(7*(2*i+6))//2
+        money+=(remainingDays*(2*(weeks+1)+(remainingDays-1)))//2
+        return money
