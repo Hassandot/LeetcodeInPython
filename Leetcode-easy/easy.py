@@ -1338,3 +1338,26 @@ def countDigits(self, num: int) -> int:
             if num%int(digit)==0:
                 count+=1
         return count
+def __init__(self):
+        self.odd=[]
+        self.even=[]
+        for i in range(1,2001):
+            if i&1:
+                self.odd.append(i)
+            else:
+                self.even.append(i)
+        self.oddPrefix=[0]*(len(self.odd)+1)
+        self.evenPrefix=[0]*(len(self.even)+1)
+        for i in range(len(self.odd)):
+            self.oddPrefix[i+1]=self.oddPrefix[i]+self.odd[i]
+        for i in range(len(self.even)):
+            self.evenPrefix[i+1]=self.evenPrefix[i]+self.even[i]
+        
+def gcd_cal(self,dividend,divisor):
+        if divisor == 0:
+            return dividend
+        return self.gcd_cal(divisor, dividend % divisor)
+    
+
+def gcdOfOddEvenSums(self, n: int) -> int:
+        return self.gcd_cal(self.oddPrefix[n],self.evenPrefix[n])
