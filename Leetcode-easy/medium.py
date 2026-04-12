@@ -964,3 +964,30 @@ def xorAfterQueries(self, nums: List[int], queries: List[List[int]]) -> int:
         for num in nums:
             res^=num
         return res
+def gcd(dividend,divisor):
+        if divisor==0:
+            return dividend
+        return gcd(divisor,dividend%divisor)
+def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        arr=[]
+        while head!=None:
+            arr.append(head.val)
+            head=head.next
+        gcds=[]
+        for i in range(len(arr)-1):
+            gcds.append(gcd(arr[i],arr[i+1]))
+        res=[]
+        i=0
+        n=len(gcds)
+        for num in arr:
+            res.append(num)
+            if i<n: 
+                res.append(gcds[i])
+            i+=1
+        dummy=ListNode(0)
+        head=dummy
+        for i in range(len(res)):
+            new=ListNode(res[i])
+            head.next=new
+            head=head.next
+        return dummy.next
