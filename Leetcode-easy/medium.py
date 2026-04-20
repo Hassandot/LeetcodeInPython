@@ -991,3 +991,14 @@ def insertGreatestCommonDivisors(self, head: Optional[ListNode]) -> Optional[Lis
             head.next=new
             head=head.next
         return dummy.next
+
+
+def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        mpp={}
+        while head:
+            if mpp.get(head,False)==False:
+                mpp[head]=True
+            elif mpp[head]:
+                return head
+            head=head.next
+        return None
