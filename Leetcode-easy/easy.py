@@ -1406,3 +1406,14 @@ def getMinDistance(self, nums: List[int], target: int, start: int) -> int:
             if nums[i]==target:
                 res=min(res,abs(i-start))
         return res
+
+
+def hasCycle(self, head: Optional[ListNode]) -> bool:
+        slow=head
+        fast=head
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+            if slow==fast:
+                return True
+        return False
