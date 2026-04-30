@@ -25,7 +25,7 @@ def findThePrefixCommonArray( A: List[int], B: List[int]) -> List[int]:
         for j in range(i+1):
             count+=1 if A[j] in temp else 0
         result.append(count)
-        
+
     return result
 def countMaxOrSubsets(self, nums: List[int]) -> int:
         noc=1<<len(nums)
@@ -1003,3 +1003,4 @@ def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
                 return head
             head=head.next
         return None
+def removetheNthNodefromEnd()
