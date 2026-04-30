@@ -1003,5 +1003,15 @@ def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
                 return head
             head=head.next
         return None
-def removetheNthNodefromEnd()
-    
+def removetheNthNodefromEnd(head,n):
+        dummy=ListNode(0)
+        dummy.next=head
+        slow=dummy
+        fast=dummy
+        for i in range(n):
+            fast=fast.next
+        while fast.next:
+            slow=slow.next
+            fast=fast.next
+        slow.next=slow.next.next
+        return dummy.next
