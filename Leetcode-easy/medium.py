@@ -1004,3 +1004,4 @@ def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
             head=head.next
         return None
 def removetheNthNodefromEnd()
+    
