@@ -1015,3 +1015,20 @@ def removetheNthNodefromEnd(head,n):
             fast=fast.next
         slow.next=slow.next.next
         return dummy.next
+def lengthOfLongestSubstring(s: str) -> int:
+    maxLength=0
+    mpp={}
+    i,j=0,0
+    while j<len(s):
+        mpp[s[j]]=mpp.get(s[j],0)+1
+        if mpp[s[j]]==2:
+            maxLength=max(maxLength,j-i)
+            while s[j]!=s[i]:
+                mpp[s[i]]-=1
+                i+=1
+            mpp[s[j]]-=1
+            i+=1
+            j+=1
+        else:
+            j+=1
+    return max(maxLength,j-i)
