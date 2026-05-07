@@ -1042,5 +1042,19 @@ def countDistinctIntegers(self, nums: List[int]) -> int:
         for _ in mpp.items():
             count+=1
         return count
+def findingUsersActiveMinutes(self, logs: List[List[int]], k: int) -> List[int]:
+        mpp1={}
+        for log in logs:
+            mpp1[log[0]]=mpp1.get(log[0],[])
+            mpp1[log[0]].append(log[1])
+        res=[0]*k
+        mpp2={}
+        for log in mpp1.items():
+            kk=len(set(log[1]))
+            mpp2[kk]=mpp2.get(kk,0)+1
+        for log in mpp2.items():
+            if log[0]>=1 and log[0]<=k:
+                res[log[0]-1]=log[1]
+        return res
 
 
