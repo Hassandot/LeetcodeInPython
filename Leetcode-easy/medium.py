@@ -1032,3 +1032,15 @@ def lengthOfLongestSubstring(s: str) -> int:
         else:
             j+=1
     return max(maxLength,j-i)
+def countDistinctIntegers(self, nums: List[int]) -> int:
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+            temp=int(str(num)[::-1])
+            mpp[temp]=mpp.get(temp,0)+1    
+        count=0
+        for _ in mpp.items():
+            count+=1
+        return count
+
+
