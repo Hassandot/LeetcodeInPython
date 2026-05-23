@@ -1080,3 +1080,11 @@ def isStrictlyPalindromic(self, n: int) -> bool:
             if not checkPalindrome(calculateBinary(n,i)):
                 return False
         return True
+def countDigitOccurrences(nums: list[int], digit: int) -> int:
+    mpp={}
+    for num in nums:
+        while num!=0:
+            temp=num%10
+            mpp[temp]=mpp.get(temp,0)+1
+            num//=10
+    return mpp.get(digit,0)
