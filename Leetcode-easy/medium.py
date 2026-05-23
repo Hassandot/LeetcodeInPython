@@ -1056,5 +1056,13 @@ def findingUsersActiveMinutes(self, logs: List[List[int]], k: int) -> List[int]:
             if log[0]>=1 and log[0]<=k:
                 res[log[0]-1]=log[1]
         return res
-
+def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
+        prefixXor=[0]*(len(arr)+1)
+        for i in range(1,len(arr)+1):
+            prefixXor[i]=prefixXor[i-1]^arr[i-1]
+        res=[0]*len(queries)
+        for i,q in enumerate(queries):
+            left,right=q
+            res[i]=prefixXor[right+1]^prefixXor[left]
+        return res
 
