@@ -1065,4 +1065,18 @@ def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
             left,right=q
             res[i]=prefixXor[right+1]^prefixXor[left]
         return res
+def isStrictlyPalindromic(self, n: int) -> bool:
+        def calculateBinary(number , base):
+            binaryRepresentation='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+            binary=''
+            while number>0:
+                binary=binaryRepresentation[number%base]+binary
+                number=number//base
+            return binary
+        def checkPalindrome(number:str)->bool:
+            return number==number[::-1]
 
+        for i in range(2,n-1,1):
+            if not checkPalindrome(calculateBinary(n,i)):
+                return False
+        return True
