@@ -1088,3 +1088,17 @@ def countDigitOccurrences(nums: list[int], digit: int) -> int:
             mpp[temp]=mpp.get(temp,0)+1
             num//=10
     return mpp.get(digit,0)
+
+def totalWaviness(self, num1: int, num2: int) -> int:
+        numbers=[str(i) for i in range(num1,num2+1)]
+        waves=0
+        for num in numbers:
+            if len(num)<3:
+                continue
+            else:
+                for i in range(1,len(num)-1):
+                    if int(num[i])>int(num[i-1]) and int(num[i])>int(num[i+1]):
+                        waves+=1
+                    elif int(num[i])<int(num[i-1]) and int(num[i])<int(num[i+1]):
+                        waves+=1
+        return waves
