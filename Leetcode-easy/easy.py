@@ -1526,3 +1526,14 @@ class Solution:
             else:
                 res[i]=sf[i+1][0]
         return res
+    
+class Solution:
+    def digitFrequencyScore(self, n: int) -> int:
+        nums=str(n)
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+        score=0
+        for k,v in mpp.items():
+            score+=int(k)*v
+        return score
