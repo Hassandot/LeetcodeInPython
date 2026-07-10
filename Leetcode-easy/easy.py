@@ -1440,3 +1440,12 @@ class Solution:
                     even=not even
             return recursiveCall(newArr)
         return recursiveCall(nums)
+    
+class Solution:
+    def checkIfExist(self, arr: List[int]) -> bool:
+        arr.sort()
+        for i in range(len(arr)):
+            newArr=arr[:i]+arr[i+1:]
+            if 2*arr[i] in newArr:
+                return True
+        return False
