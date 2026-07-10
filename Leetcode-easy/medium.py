@@ -1102,3 +1102,12 @@ def totalWaviness(self, num1: int, num2: int) -> int:
                     elif int(num[i])<int(num[i-1]) and int(num[i])<int(num[i+1]):
                         waves+=1
         return waves
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        res=[]
+        mpp={}
+        for num in nums:
+            mpp[num]=mpp.get(num,0)+1
+            if mpp[num]==2:
+                res.append(num)
+        return res
