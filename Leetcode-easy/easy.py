@@ -1544,3 +1544,15 @@ class Solution:
             sum+=n%k
             n=n//k
         return sum
+class Solution:
+    def generateKey(self, num1: int, num2: int, num3: int) -> int:
+        nums:List[str]=[str(num1),str(num2),str(num3)]
+        for i in range(len(nums)):
+            padding:int=4-len(nums[i])
+            for _ in range(padding):
+                nums[i]='0'+nums[i]
+        res=''
+        for i in range(4):
+            minNum=min(int(nums[0][i]),int(nums[1][i]),int(nums[2][i]))
+            res+=str(minNum)
+        return int(res)
