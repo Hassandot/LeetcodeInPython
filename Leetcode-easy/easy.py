@@ -1482,3 +1482,10 @@ class Solution:
             if s[i]==revS[i]:
                 return i
         return -1
+class Solution:
+    def isAdjacentDiffAtMostwo(self, s: str) -> bool:
+        for i in range(len(s)-1):
+            if abs(int(s[i])-int(s[i+1]))<=2:
+                continue
+            return False
+        return True
