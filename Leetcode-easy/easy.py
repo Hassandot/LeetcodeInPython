@@ -1508,3 +1508,21 @@ class Solution:
 class Solution:
     def concatWithReverse(self, nums: list[int]) -> list[int]:
         return nums[:]+nums[::-1]
+class Solution:
+    def countOppositeParity(self, nums: list[int]) -> list[int]:
+        n=len(nums)
+        sf:List[List[int,int]]=[[0,0] for _ in range(n+1)]
+        for i in range(n-1,-1,-1):
+            if nums[i]&1:
+                sf[i][0]=sf[i+1][0]+1
+                sf[i][1]=sf[i+1][1]
+            else:
+                sf[i][1]=sf[i+1][1]+1
+                sf[i][0]=sf[i+1][0]
+        res=[0]*n
+        for i in range(n):
+            if nums[i]&1:
+                res[i]=sf[i+1][1]
+            else:
+                res[i]=sf[i+1][0]
+        return res
