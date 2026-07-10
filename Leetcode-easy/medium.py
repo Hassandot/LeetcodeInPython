@@ -1111,3 +1111,18 @@ class Solution:
             if mpp[num]==2:
                 res.append(num)
         return res
+    
+class Solution:
+    def partitionString(self, s: str) -> int:
+        count=0
+        mpp={}
+        for ch in s:
+            if mpp.get(ch,0)==1:
+                count+=1
+                mpp.clear()
+                mpp[ch]=mpp.get(ch,0)+1
+            else:
+                mpp[ch]=mpp.get(ch,0)+1
+        if len(mpp)>0:
+            count+=1
+        return count
