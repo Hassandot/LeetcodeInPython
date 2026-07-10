@@ -1474,3 +1474,11 @@ class Solution:
         if timer>30 and timer<=90:
             return "Red"
         return "Invalid"
+    
+class Solution:
+    def firstMatchingIndex(self, s: str) -> int:
+        revS=list(reversed(s))
+        for i in range(len(s)):
+            if s[i]==revS[i]:
+                return i
+        return -1
