@@ -1556,3 +1556,20 @@ class Solution:
             minNum=min(int(nums[0][i]),int(nums[1][i]),int(nums[2][i]))
             res+=str(minNum)
         return int(res)
+class Solution:
+    def maxDigitRange(self, nums: list[int]) -> int:
+        totalSum=0
+        digitRanges:List[List[int,int]]=[]
+        for i,num in enumerate(nums):
+            number:List[int]=list(map(int,str(num)))
+            maxNumber=max(number)
+            minNumber=min(number)
+            digitRanges.append([maxNumber-minNumber,i])
+        maxRange=0
+        for n in digitRanges:
+            maxRange=max(maxRange,n[0])
+
+        for i in range(len(digitRanges)):
+            if digitRanges[i][0]==maxRange:
+                totalSum+=nums[digitRanges[i][1]]
+        return totalSum
