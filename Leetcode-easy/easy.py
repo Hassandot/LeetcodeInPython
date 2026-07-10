@@ -1424,3 +1424,19 @@ def findTheWinner(self, n: int, k: int) -> int:
             index=(index+k-1)%len(arr)
             del arr[index]
         return arr[0]
+class Solution:
+    def minMaxGame(self, nums: List[int]) -> int:
+        def recursiveCall(nums:List[int])->int:
+            if len(nums)==1:
+                return nums[0]
+            even:bool=True
+            newArr=[]
+            for i in range(len(nums)//2):
+                if even:
+                    newArr.append(min(nums[2*i],nums[(2*i)+1]))
+                    even=not even
+                else:
+                    newArr.append(max(nums[2*i],nums[(2*i)+1]))
+                    even=not even
+            return recursiveCall(newArr)
+        return recursiveCall(nums)
