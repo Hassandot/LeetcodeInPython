@@ -1126,3 +1126,28 @@ class Solution:
         if len(mpp)>0:
             count+=1
         return count
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        def helperfunc(n,res)->str:
+            if (n-2)==0:
+                return res
+            chunks:List[str]=[]
+            currentChunk:str=res[0]
+            for i in range(1,len(res)):
+                if res[i]!=res[i-1]:
+                    chunks.append(currentChunk)
+                    currentChunk=''
+                currentChunk+=res[i]
+            if len(currentChunk)!=0:
+                chunks.append(currentChunk)
+            nextRes:str=''
+            for ch in chunks:
+                mpp:Dict[str,int]={}
+                for c in ch:
+                    mpp[c]=mpp.get(c,0)+1
+                nextRes+=(str(mpp[ch[0]])+ch[0])
+            return helperfunc(n-1,nextRes)
+        if n==1:
+            return '1'
+        return helperfunc(n,'11')
+            
