@@ -1449,3 +1449,18 @@ class Solution:
             if 2*arr[i] in newArr:
                 return True
         return False
+    
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        nums.sort()
+        mpp={}
+        i,j=0,len(nums)-1
+        while i<=j:
+            avg=(nums[i]+nums[j])/2
+            mpp[avg]=mpp.get(avg,0)+1
+            if nums[i]==nums[j]:
+                i+=1
+            else:
+                i+=1
+                j-=1
+        return len(mpp)
