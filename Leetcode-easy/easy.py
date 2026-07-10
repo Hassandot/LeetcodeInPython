@@ -1489,3 +1489,19 @@ class Solution:
                 continue
             return False
         return True
+class Solution:
+    def scoreValidator(self, events: list[str]) -> list[int]:
+        i=0
+        counter=0
+        score=0
+        while counter<10 and i<len(events):
+            if events[i].isdigit():
+                score+=int(events[i])
+            elif events[i]=='W':
+                counter+=1
+            elif events[i]=='WD':
+                score+=1
+            elif events[i]=='NB':
+                score+=1
+            i+=1
+        return [score,counter]
