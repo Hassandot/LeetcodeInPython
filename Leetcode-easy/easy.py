@@ -1505,3 +1505,6 @@ class Solution:
                 score+=1
             i+=1
         return [score,counter]
+class Solution:
+    def concatWithReverse(self, nums: list[int]) -> list[int]:
+        return nums[:]+nums[::-1]
