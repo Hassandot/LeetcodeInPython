@@ -1594,3 +1594,10 @@ class Solution:
                 else:
                     return False
         return flag
+class Solution:
+    def sumOfGoodIntegers(self, n: int, k: int) -> int:
+        totalSum=0
+        for i in range(max(1,n-k),n+k+1):
+            if abs(n-i)<=k and (n&i)==0:
+                totalSum+=i
+        return totalSum
