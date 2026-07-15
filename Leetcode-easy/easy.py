@@ -1582,3 +1582,15 @@ class Solution:
             if bits.count('0')==length or bits.count('1')==length:
                 count+=1
         return count
+    
+class Solution:
+    def consecutiveSetBits(self, n: int) -> bool:
+        bits=format(n,'0b')
+        flag=False
+        for i in range(len(bits)-1):
+            if bits[i]==bits[i+1]=='1':
+                if not flag:
+                    flag=True
+                else:
+                    return False
+        return flag
