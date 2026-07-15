@@ -1150,4 +1150,14 @@ class Solution:
         if n==1:
             return '1'
         return helperfunc(n,'11')
-            
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        mpp={}
+        for i in range(0,len(s)-9):
+            temp=s[i:i+10]
+            mpp[temp]=mpp.get(temp,0)+1
+        res=[]
+        for k,v in mpp.items():
+            if v>1:
+                res.append(k)
+        return res            
