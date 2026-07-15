@@ -1173,4 +1173,22 @@ class Solution:
                 mpp[a]=mpp.get(a,0)+1
         
         return min(mpp.items(),key=lambda x:(-x[1],x[0]))[0]
-    
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        mpp:Dict[str,int]={}
+        for domain in cpdomains:
+            number:str=''
+            i=0
+            while domain[i]!=' ':
+                number+=domain[i]
+                i+=1
+
+            mpp[domain[i+1:]]=mpp.get(domain[i+1:],0)+int(number)  #count the whole domain
+            dotIndxs:List[int]=[i for i,ch in enumerate(domain) if ch=='.'] 
+            for i in dotIndxs:
+                mpp[domain[i+1:]]=mpp.get(domain[i+1:],0)+int(number)
+                
+        results:List[str]=[]
+        for k,v in mpp.items():
+            results.append(str(v)+' '+k)
+        return results    
