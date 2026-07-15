@@ -1161,3 +1161,16 @@ class Solution:
             if v>1:
                 res.append(k)
         return res            
+class Solution:
+    def findCommonResponse(self, responses: List[List[str]]) -> str:
+        oa:List[set]=[]
+        for a in responses:
+            oa.append(set(a))
+
+        mpp={}
+        for arr in oa:
+            for a in arr:
+                mpp[a]=mpp.get(a,0)+1
+        
+        return min(mpp.items(),key=lambda x:(-x[1],x[0]))[0]
+    
