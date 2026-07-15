@@ -1573,3 +1573,12 @@ class Solution:
             if digitRanges[i][0]==maxRange:
                 totalSum+=nums[digitRanges[i][1]]
         return totalSum
+class Solution:
+    def countMonobit(self, n: int) -> int:
+        count=0
+        for i in range(n+1):
+            bits=list(format(i,'0b'))
+            length=len(bits)
+            if bits.count('0')==length or bits.count('1')==length:
+                count+=1
+        return count
