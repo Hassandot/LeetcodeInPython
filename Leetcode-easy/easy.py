@@ -1601,3 +1601,11 @@ class Solution:
             if abs(n-i)<=k and (n&i)==0:
                 totalSum+=i
         return totalSum
+class Solution:
+    def findKthPositive(self, arr: List[int], k: int) -> int:
+        ar=[True for _ in range(1,2001)]
+        for num in arr:
+            ar[num-1]=False
+        result=[i+1 for i,f in enumerate(ar) if f]
+        
+        return result[k-1]
