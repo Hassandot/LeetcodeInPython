@@ -1287,3 +1287,26 @@ class NumMatrix:
 # Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
+
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        m=len(mat)
+        n=len(mat[0])
+        prefix:List[List[int]]=[[0]*(n+1) for _ in range(m+1)]
+
+        for i in range(1,m+1):
+            for j in range(1,n+1):
+                prefix[i][j]=mat[i-1][j-1]+prefix[i-1][j]+prefix[i][j-1]-prefix[i-1][j-1]
+
+        answer:List[List[int]]=[[0]*n for _ in range(m)]  #answer matrix with given size
+        
+        for i in range(m):
+            for j in range(n):
+                r1=i-k if i-k>=0 else 0
+                r2=i+k if i+k<m else m-1
+                c1=j-k if j-k>=0 else 0
+                c2=j+k if j+k<n else n-1
+                queryResult=prefix[r2+1][c2+1]-prefix[r1][c2+1]-prefix[r2+1][c1]+prefix[r1][c1]
+
+                answer[i][j]=queryResult
+        return answer
