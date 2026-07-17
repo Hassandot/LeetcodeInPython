@@ -1241,4 +1241,14 @@ class Solution:
                     result_b|=(1<<i)
         
         return ((result_a%MOD)*(result_b%MOD))%MOD
-    
+class Solution:
+    def __init__(self):
+
+        self.MOD:int=10**9+7
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        ender=2**n
+        maximumXor=float('-inf')
+        for i in range(ender):
+            currentAns=((a^i)*(b^i))%self.MOD
+            maximumXor=max(currentAns,maximumXor)
+        return maximumXor         
