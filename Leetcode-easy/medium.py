@@ -1213,3 +1213,32 @@ class Solution:
             i+=1
             j-=1
         return totalSum
+class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        MOD:int=10**9+7
+
+        mask:int=(1<<n)-1
+        fixed_bits_a=a & ~mask
+        fixed_bits_b=b & ~mask
+
+        result_a=fixed_bits_a
+        result_b=fixed_bits_b
+
+        for i in reversed(range(n)):
+
+            bit_a=(a>>i)&1
+            bit_b=(b>>i)&1
+            if bit_a==0 and bit_b==0:
+                result_a|=(1<<i)
+                result_b|=(1<<i)
+            elif bit_a==1 and bit_b==1:
+                result_a|=(1<<i)
+                result_b|=(1<<i)
+            else:
+                if result_a<result_b:
+                    result_a|=(1<<i)
+                else:
+                    result_b|=(1<<i)
+        
+        return ((result_a%MOD)*(result_b%MOD))%MOD
+    
