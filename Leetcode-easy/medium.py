@@ -1310,3 +1310,20 @@ class Solution:
 
                 answer[i][j]=queryResult
         return answer
+class Solution:
+    def maxSum(self, mat: List[List[int]]) -> int:
+        m=len(mat)
+        n=len(mat[0])
+        prefix:List[List[int]]=[[0]*(n+1) for _ in range(m+1)]
+
+        for i in range(1,m+1):
+            for j in range(1,n+1):
+                prefix[i][j]=mat[i-1][j-1]+prefix[i-1][j]+prefix[i][j-1]-prefix[i-1][j-1]
+
+        maximum:int=float('-inf')
+        for i in range(0,m-2):
+            for j in range(0,n-2):
+                r1,c1,r2,c2=i,j,i+2,j+2
+                queryResult=prefix[r2+1][c2+1]-prefix[r1][c2+1]-prefix[r2+1][c1]+prefix[r1][c1]
+                maximum=max(maximum,queryResult-mat[r1+1][c1]-mat[r2-1][c2])
+        return maximum
