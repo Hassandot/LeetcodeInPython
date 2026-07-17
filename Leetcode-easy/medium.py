@@ -1252,3 +1252,15 @@ class Solution:
             currentAns=((a^i)*(b^i))%self.MOD
             maximumXor=max(currentAns,maximumXor)
         return maximumXor         
+class Solution:
+    def minAllOneMultiple(self, k: int) -> int:
+        rem=1
+        numberOfOnes=1
+        mpp={}
+        while (rem%k)!=0:
+            mpp[rem]=mpp.get(rem,0)+1
+            if mpp[rem]>1:
+                return -1
+            numberOfOnes+=1
+            rem=(rem*10+1)%k
+        return numberOfOnes
