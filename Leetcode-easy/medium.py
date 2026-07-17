@@ -1192,3 +1192,24 @@ class Solution:
         for k,v in mpp.items():
             results.append(str(v)+' '+k)
         return results    
+
+class Solution:
+    def gcd(dividend,divisor):
+        if divisor==0:
+            return dividend
+        return gcd(divisor,dividend%divisor)
+    
+    def gcdSum(self, nums: list[int]) -> int:
+        prefixGcd=[]
+        maximum=-1
+        for num in nums:
+            maximum=max(maximum,num)
+            prefixGcd.append(gcd(num,maximum))
+        prefixGcd.sort(reverse=False)
+        totalSum=0
+        i,j=0,len(prefixGcd)-1
+        while i<j:
+            totalSum+=gcd(prefixGcd[i],prefixGcd[j])
+            i+=1
+            j-=1
+        return totalSum
